@@ -30,8 +30,6 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         port: 4000,
-        headers: {
-            'Access-Control-Allow-Origin': '*'
-        }
+        hot: true
     }
 };

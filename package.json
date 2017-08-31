@@ -4,7 +4,7 @@
   "description": "A seed for building symphony apps",
   "main": "app.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.babel.js --progress --colors --https"
+    "dev": "webpack-dev-server --config webpack.config.babel.js"
   },
   "author": "Ashley Mosuro",
   "license": "ISC",
