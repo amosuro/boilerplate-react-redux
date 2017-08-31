@@ -1,0 +1,10 @@
+{
+  "name": "symphony-react",
+  "version": "1.0.0",
+  "description": "A seed for building symphony apps",
+  "main": "app.js",
+  "scripts": {
+  },
+  "author": "Ashley Mosuro",
+  "license": "ISC"
+}
