@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "es6", // ES2015 module pattern
+    "target": "es6", // only need to compile to ES6, babel will compile to ES5
+    "allowSyntheticDefaultImports": true, // see below
+    "baseUrl": "src", // enables you to import relative to this folder
+    "sourceMap": true,
+    "jsx": "preserve", // enable JSX mode, but TypeScript should not transform it - babel will
+    "strict": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

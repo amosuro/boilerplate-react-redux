@@ -4,11 +4,18 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, './src/app.js')
+        app: path.resolve(__dirname, './src/app.tsx')
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].bundle.js'
+        path: path.resolve('dist'),
+        filename: '[name].bundle.js',
+    },
+    resolve: {
+        // Look for modules in .ts(x) files first, then .js
+        extensions: ['.ts', '.tsx', '.js'],
+
+        // add 'src' to the modules, so that when you import files you can do so with 'src' as the relative route
+        modules: ['src', 'node_modules'],
     },
     module: {
         rules: [
@@ -16,6 +23,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.tsx?$/,
+                loaders: ['babel-loader', 'ts-loader'],
+                include: path.resolve('src')
             }
         ]
     },
@@ -28,8 +40,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
-        port: 4000,
-        hot: true
+        contentBase: path.resolve('dist'),
+        port: 4000
     }
 };
