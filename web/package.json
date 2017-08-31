@@ -1,0 +1,55 @@
+{
+  "name": "symphony-react",
+  "version": "1.0.0",
+  "description": "A seed for building symphony apps",
+  "main": "app.js",
+  "scripts": {
+    "bundle": "webpack",
+    "lint": "./node_modules/.bin/eslint ./src/**/*.jsx",
+    "dev": "webpack-dev-server --hot --inline",
+    "test": "jest"
+  },
+  "author": "Ashley Mosuro",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^20.0.4",
+    "prop-types": "^15.5.10",
+    "react-test-renderer": "^15.6.1",
+    "ts-loader": "^2.3.4",
+    "tslint": "^5.7.0",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.5.5",
+    "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "shared"
+    ]
+  }
+}
