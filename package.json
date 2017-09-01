@@ -4,6 +4,7 @@
   "description": "A seed for building symphony apps",
   "main": "app.js",
   "scripts": {
+    "bundle": "webpack",
     "dev": "webpack-dev-server --hot --inline"
   },
   "author": "Ashley Mosuro",
