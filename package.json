@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "bundle": "webpack",
-    "lint": "",
+    "lint": "./node_modules/.bin/eslint ./src/**/*.jsx",
     "dev": "webpack-dev-server --hot --inline"
   },
   "author": "Ashley Mosuro",
@@ -14,9 +14,12 @@
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^4.5.0",
+    "eslint-plugin-react": "^7.3.0",
     "html-webpack-plugin": "^2.30.1",
     "ts-loader": "^2.3.4",
     "tslint": "^5.7.0",
