@@ -1,4 +1,4 @@
-export const SEED_APP_CONFIG = {
+module.exports = {
     NAMESPACE: 'seed:app',
     ID: 'seed',
     TITLE: 'Symphony Seed App'

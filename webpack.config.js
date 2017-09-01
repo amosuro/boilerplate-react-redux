@@ -1,6 +1,6 @@
-import { SEED_APP_CONFIG } from './config.js';
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+var SEED_APP_CONFIG = require('./config.js');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
