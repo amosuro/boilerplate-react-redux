@@ -1,6 +1,7 @@
 var SEED_APP_CONFIG = require('./config.js');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 module.exports = {
     entry: {
@@ -8,7 +9,7 @@ module.exports = {
     },
     output: {
         path: path.resolve('dist'),
-        filename: '[name].bundle.js',
+        filename: '[name][hash].bundle.js',
     },
     resolve: {
         // Look for modules in .ts(x) files first, then .js
@@ -32,6 +33,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new WebpackCleanupPlugin(),
         new HtmlWebpackPlugin({
             title: SEED_APP_CONFIG.TITLE,
             filename: 'app.html',
