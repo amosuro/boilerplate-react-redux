@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-    return (
-        <div>
-            <p>Hello world!</p>
-        </div>
-    )
-};
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Hello world!</p>
+            </div>
+        )
+    }
+}
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+);
