@@ -35,8 +35,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: SEED_APP_CONFIG.TITLE,
             filename: 'app.html',
-            template: './src/app.html',
-            inject: false
+            template: './src/app.html'
         })
     ],
     devServer: {
