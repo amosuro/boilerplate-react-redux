@@ -43,5 +43,14 @@ module.exports = {
     devServer: {
         contentBase: path.resolve('dist'),
         port: 4000
+    },
+    externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
+        'react-addons-test-utils': 'react-dom',
+    },
+    node: {
+        fs: "empty"
     }
 };
