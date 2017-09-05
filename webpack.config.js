@@ -5,7 +5,7 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, './src/app.jsx')
+        app: path.resolve(__dirname, './src/index.jsx')
     },
     output: {
         path: path.resolve('dist'),
@@ -36,8 +36,8 @@ module.exports = {
         new WebpackCleanupPlugin(),
         new HtmlWebpackPlugin({
             title: SEED_APP_CONFIG.TITLE,
-            filename: 'app.html',
-            template: './src/app.html'
+            filename: 'index.html',
+            template: './src/index.html'
         })
     ],
     devServer: {
