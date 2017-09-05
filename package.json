@@ -7,7 +7,7 @@
     "bundle": "webpack",
     "lint": "./node_modules/.bin/eslint ./src/**/*.jsx",
     "dev": "webpack-dev-server --hot --inline",
-    "test": "karma start"
+    "test": "jest"
   },
   "author": "Ashley Mosuro",
   "license": "ISC",
