@@ -7,14 +7,13 @@
   textarea.proto-input__field {
     flex: 0 1 auto;
     font-size: 2rem;
-    line-height: 3rem;
+    line-height: 1.5;
     padding: 1.5rem 1.5rem 1.5rem 8rem;
     border-radius: 3px;
     resize: none;
 
     &.proto-input__field--small {
       font-size: 1rem;
-      line-height: 1.5rem;
     }
   }
 }

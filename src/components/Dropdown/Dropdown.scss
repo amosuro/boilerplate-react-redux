@@ -5,9 +5,8 @@
   font-size: 0.8rem;
   position: relative;
   cursor: pointer;
-  margin: 0 0.5rem 0 0;
+  margin: 4px 0;
   width: 100%;
-  max-width: 10em;
 }
 
 .proto-dropdown--active {
@@ -46,6 +45,6 @@
   width: 100%;
 
   &:hover {
-    background: #252525;
+    background: #353535;
   }
 }

@@ -19,8 +19,21 @@
   width: 75px;
   text-align: center;
   opacity: 0.4;
-}
 
-.proto-types__item--active {
-  opacity: 1;
+  &.proto-types__item--commentary {
+    background: #3b543a;
+  }
+
+  &.proto-types__item--idea {
+    background: #675823;
+  }
+
+  &.proto-types__item--news {
+    background: #5f495b;
+  }
+
+  &.proto-types__item--active {
+    opacity: 1;
+    font-weight: bold;
+  }
 }

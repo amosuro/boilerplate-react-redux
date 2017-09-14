@@ -15,7 +15,7 @@ export default class CommentaryTypes extends React.Component {
                     return (
                         <li key={idx}
                             onClick={() => this.props.updateType(type.id)}
-                            className={`proto-types__item ${type.active ? 'proto-types__item--active' : ''}`}>
+                            className={`proto-types__item proto-types__item--${type.id} ${type.active ? 'proto-types__item--active' : ''}`}>
                             {type.label}
                         </li>
                     )

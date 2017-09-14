@@ -2,12 +2,11 @@ import React from 'react';
 
 import url from './CommentaryForm.scss';
 
-import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
-import CommentaryTextArea from '../CommentaryTextArea/CommentaryTextArea';
+import NewCommentary from '../NewCommentary/NewCommentary';
+import NewIdea from '../NewIdea/NewIdea';
 import CommentaryFormRating from '../CommentaryFormRating/CommentaryFormRating';
-import CommentaryLock from '../CommentaryLock/CommentaryLock';
+import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
 import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
 
 export default class CommentaryForm extends React.Component {
     constructor(props) {
@@ -15,6 +14,7 @@ export default class CommentaryForm extends React.Component {
 
         this.state = {
             textAreaRows: 1,
+            textAreaFocus: false,
             hashTags: [],
             ratingCount: 0,
             types: [
@@ -34,7 +34,19 @@ export default class CommentaryForm extends React.Component {
                 { id: 'rates', label: 'Rates', active: false },
                 { id: 'credit', label: 'Credit', active: false },
                 { id: 'equities', label: 'Equities', active: false },
-                { id: 'commodities', label: 'Commodities', active: false },
+                { id: 'commodities', label: 'Commodities', active: false }
+            ],
+            products: [
+                { id: 'spot', label: 'Spot', active: false },
+                { id: 'ndf', label: 'NDF', active: false },
+                { id: 'swap', label: 'Swap', active: false },
+                { id: 'forwards', label: 'Forwards', active: false },
+                { id: 'futures', label: 'Futures', active: false }
+            ],
+            convictionLevels: [
+                { id: '60', label: '< 60%', active: false },
+                { id: '60-80', label: '60-80%', active: false },
+                { id: '80', label: '> 80%', active: false }
             ]
         }
     }
@@ -70,7 +82,6 @@ export default class CommentaryForm extends React.Component {
                     while (element.offsetHeight < element.scrollHeight) {
                         element.style.height = (heightOfElement++)+'px';
                     }
-
                     element.style.height = origHeight;
                     element.style.overflow = overflow;
 
@@ -82,10 +93,17 @@ export default class CommentaryForm extends React.Component {
         }
     }
 
-    onKeyUp(event) {
+    onKeyUp(event, shouldAdjustHeight) {
+        this.populateHashtags(event);
+
+        if (shouldAdjustHeight) {
+            this.adjustInputHeight(event);
+        }
+    }
+
+    populateHashtags(event) {
         const textarea = event.target;
         const textContent = textarea.value;
-        const smallTextAreaClass = 'proto-input__field--small';
 
         if (textContent.length > 2) {
             this.findHashTags(textContent);
@@ -95,14 +113,19 @@ export default class CommentaryForm extends React.Component {
                 ratingCount: 0
             });
         }
+    }
+
+    adjustInputHeight(event) {
+        const textarea = event.target;
+        const smallTextAreaClass = 'proto-input__field--small';
+
         this.calculateInputHeight(event);
 
-        if (textContent.length > 117) {
+        if (textarea.value.length > 117) {
             textarea.classList.add(smallTextAreaClass);
         } else {
             textarea.classList.remove(smallTextAreaClass);
         }
-
     }
 
     findHashTags(textContent) {
@@ -135,55 +158,101 @@ export default class CommentaryForm extends React.Component {
         });
 
         this.setState({
-            types: newTypes
+            types: newTypes,
+            textAreaFocus: true
         });
     }
 
-    onDropdownSelect(id, name) {
-        if (name === 'Regions') {
-            const newRegions = Object.assign(this.state.regions);
-            const itemToUpdate = newRegions.find(region => region.id === id);
+    getActiveType() {
+        return this.state.types.find(type => type.active).id;
+    }
 
-            itemToUpdate.active = !itemToUpdate.active;
-        } else if (name === 'Asset Class') {
-            const newAssetClass = Object.assign(this.state.assetClass);
-            const itemToUpdate = newAssetClass.find(as => as.id === id);
+    onDropdownSelect(id, name) {
+        switch(name) {
+            case 'Regions':
+                setActiveItem(this.state.regions);
+                break;
+            case 'Asset Class':
+                setActiveItem(this.state.assetClass);
+                break;
+            case 'Products':
+                setActiveItem(this.state.products);
+                break;
+            case 'Conviction Level':
+                setActiveItem(this.state.convictionLevels);
+                break;
+        }
+
+        function setActiveItem(items) {
+            const newItems = Object.assign(items);
+            const itemToUpdate = newItems.find(item => item.id === id);
 
             itemToUpdate.active = !itemToUpdate.active;
         }
     }
 
     render() {
+        let activeType;
+
+        switch (this.getActiveType()) {
+            case 'commentary':
+                activeType = <NewCommentary regions={this.state.regions}
+                                            assetClass={this.state.assetClass}
+                                            types={this.state.types}
+                                            textAreaRows={this.state.textAreaRows}
+                                            textAreaFocus={this.state.textAreaFocus}
+                                            updateType={this.updateType.bind(this)}
+                                            onKeyUp={this.onKeyUp.bind(this)}
+                                            onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                break;
+            case 'idea':
+                activeType = <NewIdea regions={this.state.regions}
+                                      assetClass={this.state.assetClass}
+                                      types={this.state.types}
+                                      products={this.state.products}
+                                      convictionLevels={this.state.convictionLevels}
+                                      textAreaRows={this.state.textAreaRows}
+                                      textAreaFocus={this.state.textAreaFocus}
+                                      updateType={this.updateType.bind(this)}
+                                      onKeyUp={this.onKeyUp.bind(this)}
+                                      onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                break;
+            case 'news':
+                activeType = <NewCommentary regions={this.state.regions}
+                                            assetClass={this.state.assetClass}
+                                            types={this.state.types}
+                                            textAreaRows={this.state.textAreaRows}
+                                            textAreaFocus={this.state.textAreaFocus}
+                                            updateType={this.updateType.bind(this)}
+                                            onKeyUp={this.onKeyUp.bind(this)}
+                                            onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                break;
+        }
+
         return (
             <div className="proto">
                 <h1 className="proto-heading">Good morning, <span className="proto-heading__sub">@Ashley Mosuro</span></h1>
-                <div className="proto-row">
-                    <div className="proto-left">
-                        <Dropdown name="Regions"
-                                  items={this.state.regions}
-                                  onClick={this.onDropdownSelect.bind(this)} />
-                        <Dropdown name="Asset Class"
-                                  items={this.state.assetClass}
-                                  onClick={this.onDropdownSelect.bind(this)} />
-                    </div>
-                    <div className="proto-right">
-                        <CommentaryLock />
-                    </div>
-                </div>
-                <CommentaryTextArea rows={this.state.textAreaRows}
-                                    updateType={this.updateType.bind(this)}
-                                    types={this.state.types}
-                                    onKeyUp={this.onKeyUp.bind(this)}
-                                    onMouseUp={this.onMouseUp.bind(this)} />
-                <div className="proto-row">
-                    <div className="proto-left">
+                {activeType}
+                <div className="row">
+                    <div className="col-xs-6">
                         <CommentaryFormTags hashTags={this.state.hashTags} />
                     </div>
-                    <div className="proto-right">
-                        <CommentaryFormRating ratingCount={this.state.ratingCount} />
-                        <Button label="Post"
-                                bgColor="#04a964"
-                                clickAction={() => ''} />
+                    <div className="col-xs-6">
+                        <div className="row end-xs middle-xs">
+                            <div className="col-xs-3">
+                                <CommentaryFormRating ratingCount={this.state.ratingCount} />
+                            </div>
+                            <div className="col-xs-2">
+                                <Button label="Cancel"
+                                        bgColor="#5f5f5f"
+                                        clickAction={() => ''} />
+                            </div>
+                            <div className="col-xs-2">
+                                <Button label="Post"
+                                        bgColor="#04a964"
+                                        clickAction={() => ''} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
