@@ -20,7 +20,7 @@ export default class NewIdea extends React.Component {
         return (
             <div>
                 <div className="row bottom-xs">
-                    <div className="col-xs-6">
+                    <div className="col-xs-8">
                         <div className="row">
                             <div className="col-xs-3">
                                 <Dropdown name="Regions"
@@ -44,7 +44,7 @@ export default class NewIdea extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xs-6">
+                    <div className="col-xs-4">
                         <CommentaryLock />
                     </div>
                 </div>

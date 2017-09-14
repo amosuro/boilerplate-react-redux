@@ -193,6 +193,7 @@ export default class CommentaryForm extends React.Component {
 
     render() {
         let activeType;
+        let buttonColor;
 
         switch (this.getActiveType()) {
             case 'commentary':
@@ -204,6 +205,7 @@ export default class CommentaryForm extends React.Component {
                                             updateType={this.updateType.bind(this)}
                                             onKeyUp={this.onKeyUp.bind(this)}
                                             onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+
                 break;
             case 'idea':
                 activeType = <NewIdea regions={this.state.regions}
@@ -233,26 +235,22 @@ export default class CommentaryForm extends React.Component {
             <div className="proto">
                 <h1 className="proto-heading">Good morning, <span className="proto-heading__sub">@Ashley Mosuro</span></h1>
                 {activeType}
-                <div className="row">
-                    <div className="col-xs-6">
+                <div className="row middle-xs">
+                    <div className="col-xs-6 col-sm-4">
                         <CommentaryFormTags hashTags={this.state.hashTags} />
                     </div>
-                    <div className="col-xs-6">
-                        <div className="row end-xs middle-xs">
-                            <div className="col-xs-3">
-                                <CommentaryFormRating ratingCount={this.state.ratingCount} />
-                            </div>
-                            <div className="col-xs-2">
-                                <Button label="Cancel"
-                                        bgColor="#5f5f5f"
-                                        clickAction={() => ''} />
-                            </div>
-                            <div className="col-xs-2">
-                                <Button label="Post"
-                                        bgColor="#04a964"
-                                        clickAction={() => ''} />
-                            </div>
-                        </div>
+                    <div className="col-xs-6 col-sm-4">
+                        <CommentaryFormRating ratingCount={this.state.ratingCount} />
+                    </div>
+                    <div className="col-xs-6 col-sm-2">
+                        <Button label="Cancel"
+                                bgColor="#5f5f5f"
+                                clickAction={() => ''} />
+                    </div>
+                    <div className="col-xs-6 col-sm-2">
+                        <Button label="Post"
+                                bgColor="#04a964"
+                                clickAction={() => ''} />
                     </div>
                 </div>
             </div>

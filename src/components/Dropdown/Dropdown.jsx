@@ -8,12 +8,29 @@ export default class Dropdown extends React.Component {
 
         this.state = {
             listVisible: false
+        };
+
+        // required due to a gotcha with removing event listeners when using bind(this)
+        this.onBodyClick = this.onBodyClick.bind(this);
+    }
+
+    componentDidUpdate() {
+        if (this.state.listVisible) {
+            document.body.addEventListener('click', this.onBodyClick);
+        } else {
+            document.body.removeEventListener('click', this.onBodyClick);
         }
     }
 
     toggleListVisibility(id) {
         this.setState({
             listVisible: !this.state.listVisible
+        });
+    }
+
+    onBodyClick() {
+        this.setState({
+            listVisible: false
         });
     }
 

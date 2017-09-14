@@ -15,21 +15,21 @@ export default class NewCommentary extends React.Component {
         return (
             <div>
                 <div className="row bottom-xs">
-                    <div className="col-xs-6">
+                    <div className="col-xs-8">
                         <div className="row">
-                            <div className="col-xs-3">
+                            <div className="col-xs-6 col-sm-3">
                                 <Dropdown name="Regions"
                                           items={this.props.regions}
                                           onClick={this.props.onDropdownSelect} />
                             </div>
-                            <div className="col-xs-3">
+                            <div className="col-xs-6 col-sm-3">
                                 <Dropdown name="Asset Class"
                                           items={this.props.assetClass}
                                           onClick={this.props.onDropdownSelect} />
                             </div>
                         </div>
                     </div>
-                    <div className="col-xs-6">
+                    <div className="col-xs-4">
                         <CommentaryLock />
                     </div>
                 </div>
