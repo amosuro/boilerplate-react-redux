@@ -1,0 +1,13 @@
+{
+  "applications": [
+    {
+      "type": "sandbox",
+      "id": "seed",
+      "name": "Symphony Seed",
+      "blurb": "This is a bare-bones boilerplate used to kick-start Symphony apps",
+      "publisher": "HSBC",
+      "url": "https://localhost:4000/controller.html",
+      "domain": "localhost"
+    }
+  ]
+}

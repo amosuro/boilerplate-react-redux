@@ -1,12 +1,14 @@
 import React from 'react';
 
-import MainNavigation from '../../containers/MainNavigation';
+import CommentaryForm from '../CommentaryForm/CommentaryForm';
+
+import url from '../../styles.scss';
 
 export default class App extends React.Component {
     render() {
         return (
             <div>
-                <MainNavigation></MainNavigation>
+                <CommentaryForm />
             </div>
         );
     }

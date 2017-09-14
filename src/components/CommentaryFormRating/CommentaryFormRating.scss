@@ -1,0 +1,39 @@
+.symphony-external-app {
+  .proto-stars {
+    list-style: none;
+    margin: 0 1rem 0 0.5rem;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    height: 15px;
+  }
+
+  .proto-stars__star {
+    flex: 0 1 auto;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin: 0;
+    color: #828262;
+    position: relative;
+    width: 20px;
+
+  }
+
+  .proto-stars__star.fa-star:before {
+    position: absolute;
+    animation: 1.5s 1 bounce;
+    top: 0;
+    right: 0;
+    color: yellow;
+  }
+
+  .proto-stars--fifth {
+    animation: 1.5s 1 bounce;
+    top: 0;
+    right: 0;
+
+    .proto-stars__star.fa-star:before {
+      animation: 1.5s 1 fiveStars;
+    }
+  }
+}

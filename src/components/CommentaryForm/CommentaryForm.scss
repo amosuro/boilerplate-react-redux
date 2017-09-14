@@ -1,0 +1,42 @@
+.symphony-external-app {
+    .proto {
+        padding: 8px;
+        border: 1px solid #797979;
+        background: #3e3e3e;
+    }
+
+    .proto-heading {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+        color: #191919;
+    }
+
+    .proto-heading__sub {
+        color: #44b3dd;
+        cursor: pointer;
+    }
+
+    .proto-row {
+        display: flex;
+    }
+
+    .proto-row--divider {
+        margin: 0.5rem 0 1rem 3rem;
+        padding: 1rem 0 0 0;
+        border-top: 1px solid #252525;
+    }
+
+    .proto-left {
+        display: flex;
+        flex: 1;
+        align-items: center;
+    }
+
+    .proto-right {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+        text-align: right;
+        align-items: center;
+    }
+}

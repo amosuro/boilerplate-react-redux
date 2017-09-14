@@ -1,0 +1,31 @@
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+    color: transparent;
+  }
+  60% {
+    transform: translateY(-15px);
+    color: yellow;
+  }
+}
+
+@keyframes fiveStars {
+  0%, 20%, 50%, 80%, 100% {
+    color: #ffb510;
+  }
+  20% {
+    color: yellow;
+  }
+  40% {
+    color: #ffb510;
+  }
+  60% {
+    color: yellow;
+  }
+  80% {
+    color: #ffb510;
+  }
+}

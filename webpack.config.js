@@ -5,11 +5,12 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, './src/index.jsx')
+        app: path.resolve(__dirname, './src/index.jsx'),
+        controller: path.resolve(__dirname, './src/symphony/controller.js')
     },
     output: {
         path: path.resolve('dist'),
-        filename: '[name][hash].bundle.js',
+        filename: '[name].bundle.js',
     },
     resolve: {
         // Look for modules in .js(x) files first, then .js
@@ -29,6 +30,25 @@ module.exports = {
                 test: /\.jsx?$/,
                 loaders: ['babel-loader'],
                 include: path.resolve('src')
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: "sass-loader" }
+                ]
+            },
+            {
+                test: /\.json$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -36,13 +56,22 @@ module.exports = {
         new WebpackCleanupPlugin(),
         new HtmlWebpackPlugin({
             title: SEED_APP_CONFIG.TITLE,
-            filename: 'index.html',
+            filename: 'app.html',
             template: './src/index.html'
+        }),
+        new HtmlWebpackPlugin({
+            filename: "controller.html",
+            template: "./src/symphony/controller.html",
+            inject: false
         })
     ],
     devServer: {
         contentBase: path.resolve('dist'),
-        port: 4000
+        port: 4000,
+        https: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
     },
     externals: {
         'react/addons': true,
@@ -52,5 +81,6 @@ module.exports = {
     },
     node: {
         fs: "empty"
-    }
+    },
+    devtool: 'source-map'
 };
