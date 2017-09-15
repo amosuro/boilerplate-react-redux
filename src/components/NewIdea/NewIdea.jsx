@@ -2,14 +2,11 @@ import React from 'react';
 
 import url from './NewIdea.scss';
 
-import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
 import CommentaryTextArea from '../CommentaryTextArea/CommentaryTextArea';
-import CommentaryFormRating from '../CommentaryFormRating/CommentaryFormRating';
 import CommentaryLock from '../CommentaryLock/CommentaryLock';
-import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import Input from '../Input/Input';
-import TextArea from '../TextArea/TextArea';
+import Bullets from '../Bullets/Bullets';
 
 export default class NewIdea extends React.Component {
     constructor(props) {
@@ -55,30 +52,32 @@ export default class NewIdea extends React.Component {
                                     types={this.props.types}
                                     onMouseUp={this.props.onMouseUp} />
                 <div className="row">
-                    <div className="col-xs-12 col-sm-4">
+                    <div className="col-xs-12 col-sm-5">
                         <div className="row">
                             <div className="col-xs-4">
-                                <Input type="text" placeholder="Currency" />
+                                <Input type="text" placeholder="Entry price" />
                             </div>
                             <div className="col-xs-4">
-                                <Input type="text" placeholder="Entry" />
-                            </div>
-                            <div className="col-xs-4">
-                                <Input type="text" placeholder="Time Horizon" />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-xs-6">
                                 <Input type="text" placeholder="TP level" />
                             </div>
-                            <div className="col-xs-6">
+                            <div className="col-xs-4">
                                 <Input type="text" placeholder="SL level" />
                             </div>
                         </div>
+                        <div className="row">
+                            <div className="col-xs-6">
+                                <Input type="text" placeholder="Currency" />
+                            </div>
+                            <div className="col-xs-6">
+                                <Input type="text" placeholder="Time Horizon" />
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-xs-12 col-sm-8">
-                        <TextArea placeholder="Rationale"
-                                  onKeyUp={this.props.onKeyUp} />
+                    <div className="col-xs-12 col-sm-7">
+                        <Bullets bullets={this.props.rationale}
+                                 addNew={this.props.addNewRationale}
+                                 remove={this.props.removeRationale}
+                                 update={this.props.updateRationale} />
                     </div>
                 </div>
             </div>

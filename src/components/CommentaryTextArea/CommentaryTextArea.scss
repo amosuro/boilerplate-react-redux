@@ -8,12 +8,16 @@
     flex: 0 1 auto;
     font-size: 2rem;
     line-height: 1.5;
-    padding: 1.5rem 1.5rem 1.5rem 8rem;
+    padding: 2rem 0.5rem 1rem 0.5rem;
     border-radius: 3px;
     resize: none;
 
     &.proto-input__field--small {
       font-size: 1rem;
+    }
+
+    &.proto-input__field--formatting {
+      padding-bottom: 2rem;
     }
   }
 }

@@ -38,7 +38,8 @@ export default class NewCommentary extends React.Component {
                                     shouldFocus={this.props.textAreaFocus}
                                     updateType={this.props.updateType}
                                     types={this.props.types}
-                                    onKeyUp={this.props.onKeyUp} />
+                                    onKeyUp={this.props.onKeyUp}
+                                    withFormatting={true} />
             </div>
         )
     }

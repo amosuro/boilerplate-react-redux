@@ -10,17 +10,17 @@ export default class CommentaryTypes extends React.Component {
     render() {
         return (
             <ul className="proto-types">
-            {
-                this.props.types.map((type, idx) => {
-                    return (
-                        <li key={idx}
-                            onClick={() => this.props.updateType(type.id)}
-                            className={`proto-types__item proto-types__item--${type.id} ${type.active ? 'proto-types__item--active' : ''}`}>
-                            {type.label}
-                        </li>
-                    )
-                })
-            }
+                {
+                    this.props.types.map((type, idx) => {
+                        return (
+                            <li key={idx}
+                                onClick={() => this.props.updateType(type.id)}
+                                className={`proto-types__item proto-types__item--${type.id} ${type.active ? 'proto-types__item--active' : ''}`}>
+                                {type.label}
+                            </li>
+                        )
+                    })
+                }
             </ul>
         )
     }

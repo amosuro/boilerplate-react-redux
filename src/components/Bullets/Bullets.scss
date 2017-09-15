@@ -1,0 +1,48 @@
+.proto-bullets {
+
+}
+
+.proto-bullets__bullet {
+  display: flex;
+}
+
+.proto-bullets__bullet--first {
+  .proto-bullets__bullet__remove {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+.proto-bullets__bullet__label {
+  flex: 0 1 auto;
+}
+
+.proto-bullets__bullet__remove {
+  flex: 0 1 auto;
+  text-align: right;
+}
+
+.proto-bullets__bullet__remove-icon {
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  color: #9e5555;
+}
+
+.proto-bullets__new {
+  color: #04a964;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.proto-bullets__new-icon {
+  flex: 0 1 auto;
+  padding: 0.5rem 0;
+  margin: 0 0 0 2rem;
+}
+
+.proto-bullets__new-label {
+  flex: 0 1 auto;
+  margin: 0 0 0 0.3rem;
+  font-size: 0.9rem;
+}

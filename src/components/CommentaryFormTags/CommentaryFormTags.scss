@@ -38,7 +38,7 @@
     font-size: 0.9rem;
     line-height: 1rem;
     margin: 0 0 0 0.5rem;
-    animation: 1.5s 1 bounce;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   }
 
   .proto-tags__empty__info {

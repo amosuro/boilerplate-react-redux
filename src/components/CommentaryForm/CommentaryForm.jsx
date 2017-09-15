@@ -47,6 +47,9 @@ export default class CommentaryForm extends React.Component {
                 { id: '60', label: '< 60%', active: false },
                 { id: '60-80', label: '60-80%', active: false },
                 { id: '80', label: '> 80%', active: false }
+            ],
+            rationale: [
+                { id: 1, label: '' }
             ]
         }
     }
@@ -191,9 +194,42 @@ export default class CommentaryForm extends React.Component {
         }
     }
 
+    addNewRationale() {
+        const rationales = Object.assign(this.state.rationale);
+
+        rationales.push({
+            id: rationales.length + 1,
+            label: '',
+        });
+
+        this.setState({
+            rationale: rationales
+        });
+    }
+
+    removeRationale(id) {
+        const rationales = Object.assign(this.state.rationale);
+        const newRationales = rationales.filter(rationale => rationale.id !== id);
+
+        this.setState({
+            rationale: newRationales
+        });
+    }
+
+    updateRationale(id, event) {
+        const value = event.target.value;
+        const rationales = Object.assign(this.state.rationale);
+        const rationaleToUpdate = rationales.find(rationale => rationale.id === id);
+
+        rationaleToUpdate.label = value;
+
+        this.setState({
+            rationale: rationales
+        })
+    }
+
     render() {
         let activeType;
-        let buttonColor;
 
         switch (this.getActiveType()) {
             case 'commentary':
@@ -217,7 +253,11 @@ export default class CommentaryForm extends React.Component {
                                       textAreaFocus={this.state.textAreaFocus}
                                       updateType={this.updateType.bind(this)}
                                       onKeyUp={this.onKeyUp.bind(this)}
-                                      onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                                      onDropdownSelect={this.onDropdownSelect.bind(this)}
+                                      rationale={this.state.rationale}
+                                      addNewRationale={this.addNewRationale.bind(this)}
+                                      removeRationale={this.removeRationale.bind(this)}
+                                      updateRationale={this.updateRationale.bind(this)} />;
                 break;
             case 'news':
                 activeType = <NewCommentary regions={this.state.regions}

@@ -3,6 +3,7 @@ import React from 'react';
 import url from './CommentaryTextArea.scss';
 
 import CommentaryTypes from '../CommentaryTypes/CommentaryTypes';
+import CommentaryFormatting from '../CommentaryFormatting/CommentaryFormatting';
 
 export default class CommentaryTextArea extends React.Component {
     constructor(props) {
@@ -22,17 +23,19 @@ export default class CommentaryTextArea extends React.Component {
     }
 
     render() {
-        const activeType = this.props.types.find(type => type.active);
+        const formattingOptions = this.props.withFormatting ? <CommentaryFormatting /> : null;
+        const inputClass = this.props.withFormatting ? 'proto-input__field proto-input__field--formatting' : 'proto-input__field';
 
         return (
             <div className="proto-input">
                 <CommentaryTypes updateType={this.props.updateType}
                                  types={this.props.types} />
                 <textarea ref={(textArea) => { this.textArea = textArea }}
-                          className="proto-input__field"
+                          className={inputClass}
                           placeholder={this.props.placeholder}
                           onKeyUp={event => this.onKeyUp(event, true)}
                           rows={this.props.rows} />
+                {formattingOptions}
             </div>
         );
     }

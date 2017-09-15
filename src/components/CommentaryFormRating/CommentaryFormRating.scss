@@ -1,7 +1,7 @@
 .symphony-external-app {
   .proto-stars {
     list-style: none;
-    margin: 0 1rem 0 0.5rem;
+    margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-end;
@@ -25,6 +25,7 @@
     top: 0;
     right: 0;
     color: yellow;
+    width: 20px;
   }
 
   .proto-stars--fifth {

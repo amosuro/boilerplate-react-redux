@@ -22,7 +22,7 @@ export default class Dropdown extends React.Component {
         }
     }
 
-    toggleListVisibility(id) {
+    toggleListVisibility() {
         this.setState({
             listVisible: !this.state.listVisible
         });
@@ -35,15 +35,15 @@ export default class Dropdown extends React.Component {
     }
 
     onItemClick(id, name) {
-        this.toggleListVisibility(id);
         this.props.onClick(id, name);
+        this.toggleListVisibility(id);
     }
 
     render() {
         const items = this.props.items.map((item, idx) => {
             return (
                 <li key={idx}
-                    onClick={() => this.onItemClick(item.id, this.props.name)}
+                    onMouseDown={() => this.onItemClick(item.id, this.props.name)}
                     className="proto-dropdown__list__item">
                     {item.label}
                 </li>
