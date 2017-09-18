@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import url from './CommentaryForm.scss';
 
@@ -7,6 +8,7 @@ import NewIdea from '../NewIdea/NewIdea';
 import CommentaryFormRating from '../CommentaryFormRating/CommentaryFormRating';
 import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
 import Button from '../Button/Button';
+import ToolTip from '../ToolTip/Tooltip';
 
 export default class CommentaryForm extends React.Component {
     constructor(props) {
@@ -16,7 +18,23 @@ export default class CommentaryForm extends React.Component {
             textAreaRows: 1,
             textAreaFocus: false,
             hashTags: [],
+            toolTipTarget: null,
+            existingHashtags: [
+                '#test',
+                '#commentary',
+                '#idea'
+            ],
+            potentialHashtags: [
+
+            ],
+            checkForHashtags: false,
             ratingCount: 0,
+            newCommentary: {
+                title: ''
+            },
+            newIdea: {
+                title: ''
+            },
             types: [
                 { id: 'commentary', label: 'Commentary', active: true },
                 { id: 'idea', label: 'Idea', active: false },
@@ -52,6 +70,18 @@ export default class CommentaryForm extends React.Component {
                 { id: 1, label: '' }
             ]
         }
+    }
+
+    componentDidUpdate() {
+        if (this.state.checkForHashtags) {
+            this.setState({
+                checkForHashtags: false
+            });
+        }
+    }
+
+    calculateButtonPositions() {
+        return ReactDOM.findDOMNode(this.postBtn).getBoundingClientRect();
     }
 
     calculateInputHeight(event) {
@@ -225,7 +255,72 @@ export default class CommentaryForm extends React.Component {
 
         this.setState({
             rationale: rationales
-        })
+        });
+    }
+
+    updateCommentaryTitle(event) {
+        this.setState({
+            newCommentary: {
+                title: event.target.value
+            }
+        });
+    }
+
+    updateIdeaTitle(event) {
+        this.setState({
+            newIdea: {
+                title: event.target.value
+            }
+        });
+    }
+
+    post() {
+        this.checkForHashtags();
+    }
+
+    checkForHashtags() {
+        // TODO: Needs serious refactor!!! Quick hack to get the idea working
+        const generateNewPotentialHashtags = (textContent) => {
+            const arrayOfWords = textContent.split(' ');
+            const arrayOfHashTags = this.state.existingHashtags.map(tag => tag.split('#')[1]);
+            const matchedWords = arrayOfWords.filter(val => arrayOfHashTags.indexOf(val) !== -1);
+            const potentialTags = matchedWords.map(word => `#${word}`);
+
+            if (potentialTags.length) {
+                this.setState({
+                    potentialHashtags: potentialTags,
+                    displayToolTip: potentialTags.length,
+                });
+            } else {
+                this.postAction();
+            }
+        };
+
+        switch(this.getActiveType()) {
+            case 'commentary':
+                generateNewPotentialHashtags(this.state.newCommentary.title);
+                break;
+            case 'idea':
+                generateNewPotentialHashtags(this.state.newIdea.title);
+                break;
+            case 'news':
+                generateNewPotentialHashtags(this.state.newCommentary.title);
+                break;
+        }
+    }
+
+    postAction() {
+        console.log('POSTED');
+    }
+
+    missingTagsMessage() {
+        return `Improve your reach! Add these tags? ${this.state.potentialHashtags.join(',')}`;
+    }
+
+    toggleToolTipDisplay() {
+        this.setState({
+            displayToolTip: !this.state.displayToolTip
+        });
     }
 
     render() {
@@ -240,7 +335,9 @@ export default class CommentaryForm extends React.Component {
                                             textAreaFocus={this.state.textAreaFocus}
                                             updateType={this.updateType.bind(this)}
                                             onKeyUp={this.onKeyUp.bind(this)}
-                                            onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                                            onDropdownSelect={this.onDropdownSelect.bind(this)}
+                                            title={this.state.newCommentary.title}
+                                            updateTitle={this.updateCommentaryTitle.bind(this)} />;
 
                 break;
             case 'idea':
@@ -257,7 +354,9 @@ export default class CommentaryForm extends React.Component {
                                       rationale={this.state.rationale}
                                       addNewRationale={this.addNewRationale.bind(this)}
                                       removeRationale={this.removeRationale.bind(this)}
-                                      updateRationale={this.updateRationale.bind(this)} />;
+                                      updateRationale={this.updateRationale.bind(this)}
+                                      title={this.state.newIdea.title}
+                                      updateTitle={this.updateIdeaTitle.bind(this)} />;
                 break;
             case 'news':
                 activeType = <NewCommentary regions={this.state.regions}
@@ -267,9 +366,16 @@ export default class CommentaryForm extends React.Component {
                                             textAreaFocus={this.state.textAreaFocus}
                                             updateType={this.updateType.bind(this)}
                                             onKeyUp={this.onKeyUp.bind(this)}
-                                            onDropdownSelect={this.onDropdownSelect.bind(this)} />;
+                                            onDropdownSelect={this.onDropdownSelect.bind(this)}
+                                            title={this.state.newCommentary.title}
+                                            updateTitle={this.updateCommentaryTitle.bind(this)} />;
                 break;
         }
+
+        const toolTip = this.state.displayToolTip ? <ToolTip positions={this.state.toolTipPositions}
+                                                             acceptAction={this.postAction.bind(this)}
+                                                             toggleVisibility={this.toggleToolTipDisplay.bind(this)}
+                                                             content={this.missingTagsMessage()} /> : null;
 
         return (
             <div className="proto">
@@ -290,7 +396,9 @@ export default class CommentaryForm extends React.Component {
                     <div className="col-xs-6 col-sm-2">
                         <Button label="Post"
                                 bgColor="#04a964"
-                                clickAction={() => ''} />
+                                ref={btn => { this.postBtn = btn }}
+                                clickAction={() => this.post()} />
+                        {toolTip}
                     </div>
                 </div>
             </div>

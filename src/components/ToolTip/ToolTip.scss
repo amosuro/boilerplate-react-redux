@@ -1,0 +1,56 @@
+.proto-tool-tip {
+  position: absolute;
+  top: 9rem;
+  right: 0;
+  background: #44b3dd;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-top: 1rem solid #44b3dd;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.proto-tool-tip__content {
+  padding: 1rem;
+}
+
+.proto-tool-tip__actions {
+  display: flex;
+}
+
+.proto-tool-tip__actions__btn {
+  flex: 0 1 50%;
+  border-radius: 3px 3px 0 0;
+  padding: 0.2rem;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.proto-tool-tip__actions__btn--positive {
+  @extend .proto-tool-tip__actions__btn;
+  background: #28718c;
+  border-top-left-radius: 0;
+}
+
+.proto-tool-tip__actions__btn--negative {
+  @extend .proto-tool-tip__actions__btn;
+  background: #5a95ab;
+  border-top-right-radius: 0;
+}

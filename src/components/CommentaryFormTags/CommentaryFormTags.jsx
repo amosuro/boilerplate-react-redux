@@ -27,6 +27,7 @@ export default class CommentaryFormTags extends React.Component {
                 <span className="proto-tags__empty__info fa fa-exclamation-circle"></span> Use #hashtags to expand your reach!
             </div>;
         }
+
         return (
             <div className="proto-tags">
                 <div className="proto-tags__heading">Tags</div>

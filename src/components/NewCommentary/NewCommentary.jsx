@@ -33,13 +33,15 @@ export default class NewCommentary extends React.Component {
                         <CommentaryLock />
                     </div>
                 </div>
-                <CommentaryTextArea rows={this.props.textAreaRows}
+                <CommentaryTextArea value={this.props.title}
+                                    rows={this.props.textAreaRows}
                                     placeholder="Start typing your commentary"
                                     shouldFocus={this.props.textAreaFocus}
                                     updateType={this.props.updateType}
                                     types={this.props.types}
                                     onKeyUp={this.props.onKeyUp}
-                                    withFormatting={true} />
+                                    withFormatting={true}
+                                    updateValue={this.props.updateTitle} />
             </div>
         )
     }

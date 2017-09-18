@@ -45,12 +45,14 @@ export default class NewIdea extends React.Component {
                         <CommentaryLock />
                     </div>
                 </div>
-                <CommentaryTextArea rows={this.props.textAreaRows}
+                <CommentaryTextArea title={this.props.title}
+                                    rows={this.props.textAreaRows}
                                     shouldFocus={this.props.textAreaFocus}
                                     placeholder="Give your idea a title..."
                                     updateType={this.props.updateType}
                                     types={this.props.types}
-                                    onMouseUp={this.props.onMouseUp} />
+                                    onKeyUp={this.props.onKeyUp}
+                                    updateValue={this.props.updateTitle} />
                 <div className="row">
                     <div className="col-xs-12 col-sm-5">
                         <div className="row">

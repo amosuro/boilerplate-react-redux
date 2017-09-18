@@ -34,7 +34,9 @@ export default class CommentaryTextArea extends React.Component {
                           className={inputClass}
                           placeholder={this.props.placeholder}
                           onKeyUp={event => this.onKeyUp(event, true)}
-                          rows={this.props.rows} />
+                          onChange={event => this.props.updateValue(event)}
+                          rows={this.props.rows}
+                          value={this.props.title} />
                 {formattingOptions}
             </div>
         );
