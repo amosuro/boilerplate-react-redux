@@ -1,0 +1,15 @@
+$font-size: 14px;
+$line-height: 1.2;
+$lines-to-show: 3;
+
+.proto-feed-item__detail {
+  margin: 0 1rem;
+}
+
+.proto-feed-item__detail--clipped {
+  @extend .proto-feed-item__detail;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,29 @@
+.symphony-external-app {
+  .proto-feed-item__social {
+    border-radius: 0 0 3px 3px;
+    display: flex;
+    background: rgba(#000, 0.2);
+  }
+
+  .proto-feed-item__social__item {
+    flex: 1 0 auto;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem;
+
+    &:hover {
+      background: rgba(0,0,0,0.2);
+    }
+  }
+
+  .proto-feed-item__social__item__icon {
+    display: inline-block;
+  }
+
+  .proto-feed-item__social__item__count {
+    display: inline-block;
+    margin: 0 0 0 0.5rem;
+    font-size: 1rem;
+  }
+}

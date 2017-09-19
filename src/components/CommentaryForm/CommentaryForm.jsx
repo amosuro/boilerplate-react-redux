@@ -73,7 +73,36 @@ export default class CommentaryForm extends React.Component {
                 { id: 1, label: '' }
             ],
             posts: [
-
+                {
+                    type: 'idea',
+                    title: 'Buy EURUSD 1m ATM vol',
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#spot'
+                    ],
+                    currency: 'EURUSD',
+                    convictionLevel: '> 80%',
+                    entryPrice: '1.4370',
+                    tpLevel: '1.3350',
+                    slLevel: '1.4650',
+                    timeHorizon: '1M',
+                    rationales: [
+                        'Trumps delay in leaving NAFTA in favor of a more orderly negotiation is beneficial for the Mexican Peso and trade',
+                        'Portfolio adjustments back into MXN whilst ZAR continues to struggle',
+                        '200 DMA having broken it to a low of 1.3360'
+                    ]
+                },
+                {
+                    type: 'commentary',
+                    title: 'South Africa FX update',
+                    detail: `ZAR: USDZAR was trading pretty technically again into the end of last week. Friday's range was well within Thursday's daily print, and I feel the pair remains a buy on dips. We tested the initial target I suggested last week (13.25) and the price action since leads me to suspect that actually an overshoot of the moving averages, towards sonewhere in the 13.35-13.45 area may be likely. This is purely based upon what seems to me to be growing momentum for a stronger broad Dollar. The local story remains driven by longer term structural and political concerns, which for the moment appear not to be currency drivers; fixed income also seems stable for the moment, and this as I say is a broad DXY story. Stick to the same technical levels, albeit raised a little higher, namely 13.05 / 13.15 / 13.25 / 13.35`,
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#usdzar'
+                    ]
+                }
             ]
         }
     }
@@ -112,7 +141,8 @@ export default class CommentaryForm extends React.Component {
             assetClass,
             products,
             convictionLevels,
-            textAreaRows: 1
+            textAreaRows: 1,
+            ratingCount: 0
         });
     }
 
@@ -206,17 +236,14 @@ export default class CommentaryForm extends React.Component {
     }
 
     findHashTags(textContent) {
-        const arrayOfWords = textContent.split(' ');
+        const arrayOfWords = textContent.replace(/\n/g, ' ').split(' ');
+        const hashTags = arrayOfWords.filter((word, index) => word[0] === '#' && word.length > 1);
+        const uniqueHashTags = [...new Set(hashTags)];
 
-        if (!arrayOfWords[arrayOfWords.length - 1].length) {
-            const hashTags = arrayOfWords.filter((word, index) => word[0] === '#' && word.length > 1);
-            const uniqueHashTags = [...new Set(hashTags)];
-
-            this.setState({
-                hashTags: uniqueHashTags,
-                ratingCount: uniqueHashTags.length
-            });
-        }
+        this.setState({
+            hashTags: uniqueHashTags,
+            ratingCount: uniqueHashTags.length < 5 ? uniqueHashTags.length : 5
+        });
     }
 
     onMouseUp(event) {
@@ -340,8 +367,8 @@ export default class CommentaryForm extends React.Component {
         // TODO: Needs serious refactor!!! Quick hack to get the idea working
         const generateNewPotentialHashtags = (textContent) => {
             const arrayOfWords = textContent.split(' ');
-            const arrayOfHashTags = this.state.existingHashtags.map(tag => tag.split('#')[1]);
-            const matchedWords = arrayOfWords.filter(val => arrayOfHashTags.indexOf(val) !== -1);
+            const arrayOfExistingTags = this.state.existingHashtags.map(tag => tag.split('#')[1]);
+            const matchedWords = arrayOfWords.filter(val => arrayOfExistingTags.indexOf(val) !== -1);
             const potentialTags = matchedWords.map(word => `#${word}`);
 
             if (potentialTags.length) {
@@ -501,16 +528,16 @@ export default class CommentaryForm extends React.Component {
                     <h1 className="proto-heading">Good morning, <span className="proto-heading__sub">@Ashley Mosuro</span></h1>
                     {activeType}
                     <div className="row middle-xs">
-                        <div className="col-xs-6 col-sm-4">
+                        <div className="col-xs-8 col-sm-4">
                             {formTags}
                         </div>
-                        <div className="col-xs-6 col-sm-4">
+                        <div className="col-xs-4 col-sm-4">
                             {formRating}
                         </div>
                         <div className="col-xs-6 col-sm-2">
                             <Button label="Reset"
                                     bgColor="#5f5f5f"
-                                    clickAction={() => ''} />
+                                    clickAction={() => this.reset()} />
                         </div>
                         <div className="col-xs-6 col-sm-2">
                             <Button label="Post"

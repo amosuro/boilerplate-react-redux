@@ -30,7 +30,7 @@ export default class CommentaryTextArea extends React.Component {
                 <textarea ref={(textArea) => { this.textArea = textArea }}
                           className={inputClass}
                           placeholder={this.props.placeholder}
-                          onKeyUp={event => this.onKeyUp(event)}
+                          onInput={event => this.onKeyUp(event)}
                           onChange={event => this.props.updateValue(event)}
                           rows={this.props.rows}
                           value={this.props.value} />

@@ -1,0 +1,61 @@
+.proto-feed-item--idea {
+  .proto-feed-item__excerpt__currency {
+    text-align: right;
+  }
+
+  .proto-feed-item__excerpt__currency__badge {
+    padding: 0.3rem 0.5rem;
+    background: rgba(0,0,0,0.2);
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+  }
+
+  .proto-price {
+    margin: 0 1rem;
+  }
+
+  .proto-price-badge {
+    text-align: center;
+  }
+
+  .proto-price-badge__label {
+    background: rgba(0,0,0,0.4);
+    padding: 0.2rem;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .proto-price-badge__price {
+    background: rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    font-weight: bold;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .proto-conviction {
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .proto-conviction--high {
+    background-color: #ff8470;
+  }
+
+  .proto-conviction--medium {
+    background-color: #f1b55b;
+  }
+  .proto-conviction--low {
+    background-color: #bbaf71;
+  }
+
+  .proto-conviction__label {
+    background: rgba(0,0,0,0.4);
+    padding: 0.2rem;
+  }
+
+  .proto-conviction__level {
+    background: rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+}

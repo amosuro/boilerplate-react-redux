@@ -1,0 +1,37 @@
+.symphony-external-app {
+  .proto-feed-item__meta {
+    padding: 0.5rem;
+    margin: 1rem 0 0;
+    background: rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .proto-feed-item__meta__author {
+    display: flex;
+    align-items: center;
+  }
+
+  .proto-feed-item__meta__author__pic {
+    flex: 0 1 auto;
+    margin: 0 0.5rem 0 0;
+  }
+
+  .proto-feed-item__meta__author__pic-image {
+    width: 2.5rem;
+    border-radius: 2.5rem;
+  }
+
+  .proto-feed-item__meta__author__name {
+    text-decoration: none;
+    flex: 0 1 auto;
+    font-weight: bold;
+  }
+
+  .proto-feed-item__meta__timestamp {
+    width: 100%;
+    text-align: right;
+    color: rgba(#fff, 0.5);
+    font-size: 0.8rem;
+  }
+
+}
