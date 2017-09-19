@@ -2,13 +2,17 @@ import React from 'react';
 
 import url from './NewCommentary.scss';
 
-import CommentaryTextArea from '../CommentaryTextArea/CommentaryTextArea';
 import CommentaryLock from '../CommentaryLock/CommentaryLock';
 import Dropdown from '../Dropdown/Dropdown';
+import CommentaryDualInput from '../CommentaryDualInput/CommentaryDualInput';
 
 export default class NewCommentary extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.reset();
     }
 
     render() {
@@ -33,15 +37,16 @@ export default class NewCommentary extends React.Component {
                         <CommentaryLock />
                     </div>
                 </div>
-                <CommentaryTextArea value={this.props.title}
-                                    rows={this.props.textAreaRows}
-                                    placeholder="Start typing your commentary"
-                                    shouldFocus={this.props.textAreaFocus}
-                                    updateType={this.props.updateType}
-                                    types={this.props.types}
-                                    onKeyUp={this.props.onKeyUp}
-                                    withFormatting={true}
-                                    updateValue={this.props.updateTitle} />
+                <CommentaryDualInput model={this.props.model}
+                                     rows={this.props.textAreaRows}
+                                     placeholder="Start typing your commentary"
+                                     shouldFocus={this.props.textAreaFocus}
+                                     updateType={this.props.updateType}
+                                     types={this.props.types}
+                                     onKeyUp={this.props.onKeyUp}
+                                     withFormatting={true}
+                                     updateTitle={this.props.updateTitle}
+                                     updateDetail={this.props.updateDetail} />
             </div>
         )
     }

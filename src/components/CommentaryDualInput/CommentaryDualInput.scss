@@ -1,0 +1,44 @@
+.symphony-external-app {
+
+  .proto-dual-input {
+    position: relative;
+
+    input.proto-dual-input {
+      margin-bottom: 0;
+      box-sizing: border-box;
+      border: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 2rem 1rem 1rem 0.5rem;
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+
+    textarea.proto-input__field {
+      margin-top: 0;
+      border: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      padding-top: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .proto-dual-input__textarea-enter {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  .proto-dual-input__textarea-enter.proto-dual-input__textarea-enter-active {
+    max-height: 70px;
+  }
+
+  .proto-dual-input__textarea-leave {
+    max-height: 70px;
+  }
+
+  .proto-dual-input__textarea-leave.example-leave-active {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+}

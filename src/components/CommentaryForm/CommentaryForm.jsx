@@ -9,6 +9,7 @@ import CommentaryFormRating from '../CommentaryFormRating/CommentaryFormRating';
 import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
 import Button from '../Button/Button';
 import ToolTip from '../ToolTip/Tooltip';
+import CommentaryFeed from '../CommentaryFeed/CommentaryFeed';
 
 export default class CommentaryForm extends React.Component {
     constructor(props) {
@@ -20,9 +21,7 @@ export default class CommentaryForm extends React.Component {
             hashTags: [],
             toolTipTarget: null,
             existingHashtags: [
-                '#test',
-                '#commentary',
-                '#idea'
+                '#fx'
             ],
             potentialHashtags: [
 
@@ -30,10 +29,14 @@ export default class CommentaryForm extends React.Component {
             checkForHashtags: false,
             ratingCount: 0,
             newCommentary: {
-                title: ''
+                title: '',
+                detail: '',
+                hashTags: ''
             },
             newIdea: {
-                title: ''
+                title: '',
+                detail: '',
+                hashTags: ''
             },
             types: [
                 { id: 'commentary', label: 'Commentary', active: true },
@@ -68,8 +71,49 @@ export default class CommentaryForm extends React.Component {
             ],
             rationale: [
                 { id: 1, label: '' }
+            ],
+            posts: [
+
             ]
         }
+    }
+
+    reset() {
+        const resetDropDown = (items) => {
+            return items.map(item => {
+                if (item.active) {
+                    item.active = false;
+                }
+                return item;
+            })
+        };
+        const regions = resetDropDown(Object.assign(this.state.regions));
+        const assetClass = resetDropDown(Object.assign(this.state.assetClass));
+        const products = resetDropDown(Object.assign(this.state.products));
+        const convictionLevels = resetDropDown(Object.assign(this.state.convictionLevels));
+
+        this.setState({
+           newCommentary: {
+               title: '',
+               detail: '',
+               hashTags: ''
+           },
+            newIdea: {
+                title: '',
+                detail: '',
+                hashTags: ''
+            },
+            hashTags: [],
+            potentialHashtags: [],
+            rationale: [
+                { id: 1, label: '' }
+            ],
+            regions,
+            assetClass,
+            products,
+            convictionLevels,
+            textAreaRows: 1
+        });
     }
 
     componentDidUpdate() {
@@ -154,7 +198,7 @@ export default class CommentaryForm extends React.Component {
 
         this.calculateInputHeight(event);
 
-        if (textarea.value.length > 117) {
+        if (textarea.value.length > 58) {
             textarea.classList.add(smallTextAreaClass);
         } else {
             textarea.classList.remove(smallTextAreaClass);
@@ -259,18 +303,32 @@ export default class CommentaryForm extends React.Component {
     }
 
     updateCommentaryTitle(event) {
+        const newCommentary = Object.assign(this.state.newCommentary);
+
+        newCommentary.title = event.target.value;
+
         this.setState({
-            newCommentary: {
-                title: event.target.value
-            }
+            newCommentary: newCommentary
+        });
+    }
+
+    updateCommentaryDetail(event) {
+        const newCommentary = Object.assign(this.state.newCommentary);
+
+        newCommentary.detail = event.target.value;
+
+        this.setState({
+            newCommentary: newCommentary
         });
     }
 
     updateIdeaTitle(event) {
+        const newIdea = Object.assign(this.state.newIdea);
+
+        newIdea.title = event.target.value;
+
         this.setState({
-            newIdea: {
-                title: event.target.value
-            }
+            newIdea: newIdea
         });
     }
 
@@ -298,19 +356,45 @@ export default class CommentaryForm extends React.Component {
 
         switch(this.getActiveType()) {
             case 'commentary':
-                generateNewPotentialHashtags(this.state.newCommentary.title);
+                generateNewPotentialHashtags(this.state.newCommentary.detail);
                 break;
             case 'idea':
-                generateNewPotentialHashtags(this.state.newIdea.title);
+                generateNewPotentialHashtags(this.state.newIdea.detail);
                 break;
             case 'news':
-                generateNewPotentialHashtags(this.state.newCommentary.title);
+                generateNewPotentialHashtags(this.state.newCommentary.detail);
                 break;
         }
     }
 
     postAction() {
-        console.log('POSTED');
+        switch(this.getActiveType()) {
+            case 'commentary':
+                this.generateNewCommentary();
+                break;
+            case 'idea':
+                break;
+            case 'news':
+                break;
+        }
+
+        this.reset();
+    }
+
+    generateNewCommentary() {
+        const newTags = [...this.state.hashTags, ...this.getDropdownValuesAsTags()];
+        const uniqueTags = [...new Set(newTags)];
+        const newPost = {
+            type: 'commentary',
+            title: this.state.newCommentary.title,
+            detail: this.state.newCommentary.detail,
+            tags: uniqueTags
+        };
+        const newPosts = Object.assign(this.state.posts);
+
+        this.setState({
+            posts: [newPost, ...newPosts]
+        });
     }
 
     missingTagsMessage() {
@@ -321,6 +405,32 @@ export default class CommentaryForm extends React.Component {
         this.setState({
             displayToolTip: !this.state.displayToolTip
         });
+    }
+
+    getDropdownValuesAsTags() {
+        const hashTags = [];
+        const convertToHashtag = (items) => {
+            const activeItem = items.find(item => item.active);
+
+            return `#${activeItem.label.toLowerCase()}`;
+        };
+
+        switch(this.getActiveType()) {
+            case 'commentary':
+                hashTags.push(convertToHashtag(this.state.regions));
+                hashTags.push(convertToHashtag(this.state.assetClass));
+                break;
+            case 'idea':
+                hashTags.push(convertToHashtag(this.state.regions));
+                hashTags.push(convertToHashtag(this.state.assetClass));
+                hashTags.push(convertToHashtag(this.state.products));
+                hashTags.push(convertToHashtag(this.state.convictionLevels));
+                break;
+            case 'news':
+                break;
+        }
+
+        return hashTags;
     }
 
     render() {
@@ -336,8 +446,10 @@ export default class CommentaryForm extends React.Component {
                                             updateType={this.updateType.bind(this)}
                                             onKeyUp={this.onKeyUp.bind(this)}
                                             onDropdownSelect={this.onDropdownSelect.bind(this)}
-                                            title={this.state.newCommentary.title}
-                                            updateTitle={this.updateCommentaryTitle.bind(this)} />;
+                                            model={this.state.newCommentary}
+                                            updateTitle={this.updateCommentaryTitle.bind(this)}
+                                            updateDetail={this.updateCommentaryDetail.bind(this)}
+                                            reset={this.reset.bind(this)} />;
 
                 break;
             case 'idea':
@@ -355,20 +467,23 @@ export default class CommentaryForm extends React.Component {
                                       addNewRationale={this.addNewRationale.bind(this)}
                                       removeRationale={this.removeRationale.bind(this)}
                                       updateRationale={this.updateRationale.bind(this)}
-                                      title={this.state.newIdea.title}
-                                      updateTitle={this.updateIdeaTitle.bind(this)} />;
+                                      model={this.state.newIdea}
+                                      updateTitle={this.updateIdeaTitle.bind(this)}
+                                      reset={this.reset.bind(this)} />;
                 break;
             case 'news':
                 activeType = <NewCommentary regions={this.state.regions}
                                             assetClass={this.state.assetClass}
                                             types={this.state.types}
                                             textAreaRows={this.state.textAreaRows}
-                                            textAreaFocus={this.state.textAreaFocus}
+                                            textAreaFocus={false}
                                             updateType={this.updateType.bind(this)}
                                             onKeyUp={this.onKeyUp.bind(this)}
                                             onDropdownSelect={this.onDropdownSelect.bind(this)}
-                                            title={this.state.newCommentary.title}
-                                            updateTitle={this.updateCommentaryTitle.bind(this)} />;
+                                            model={this.state.newCommentary}
+                                            updateTitle={this.updateCommentaryTitle.bind(this)}
+                                            updateDetail={this.updateCommentaryDetail.bind(this)}
+                                            reset={this.reset.bind(this)} />;
                 break;
         }
 
@@ -377,30 +492,36 @@ export default class CommentaryForm extends React.Component {
                                                              toggleVisibility={this.toggleToolTipDisplay.bind(this)}
                                                              content={this.missingTagsMessage()} /> : null;
 
+        const formTags = this.getActiveType() !== 'idea' ? <CommentaryFormTags hashTags={this.state.hashTags} /> : null;
+        const formRating = this.getActiveType() !== 'idea' ? <CommentaryFormRating ratingCount={this.state.ratingCount} /> : null;
+
         return (
             <div className="proto">
-                <h1 className="proto-heading">Good morning, <span className="proto-heading__sub">@Ashley Mosuro</span></h1>
-                {activeType}
-                <div className="row middle-xs">
-                    <div className="col-xs-6 col-sm-4">
-                        <CommentaryFormTags hashTags={this.state.hashTags} />
-                    </div>
-                    <div className="col-xs-6 col-sm-4">
-                        <CommentaryFormRating ratingCount={this.state.ratingCount} />
-                    </div>
-                    <div className="col-xs-6 col-sm-2">
-                        <Button label="Cancel"
-                                bgColor="#5f5f5f"
-                                clickAction={() => ''} />
-                    </div>
-                    <div className="col-xs-6 col-sm-2">
-                        <Button label="Post"
-                                bgColor="#04a964"
-                                ref={btn => { this.postBtn = btn }}
-                                clickAction={() => this.post()} />
-                        {toolTip}
+                <div className="proto-compose">
+                    <h1 className="proto-heading">Good morning, <span className="proto-heading__sub">@Ashley Mosuro</span></h1>
+                    {activeType}
+                    <div className="row middle-xs">
+                        <div className="col-xs-6 col-sm-4">
+                            {formTags}
+                        </div>
+                        <div className="col-xs-6 col-sm-4">
+                            {formRating}
+                        </div>
+                        <div className="col-xs-6 col-sm-2">
+                            <Button label="Reset"
+                                    bgColor="#5f5f5f"
+                                    clickAction={() => ''} />
+                        </div>
+                        <div className="col-xs-6 col-sm-2">
+                            <Button label="Post"
+                                    bgColor="#04a964"
+                                    ref={btn => { this.postBtn = btn }}
+                                    clickAction={() => this.post()} />
+                            {toolTip}
+                        </div>
                     </div>
                 </div>
+                <CommentaryFeed posts={this.state.posts} />
             </div>
         );
     }

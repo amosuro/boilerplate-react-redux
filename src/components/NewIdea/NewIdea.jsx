@@ -7,13 +7,22 @@ import CommentaryLock from '../CommentaryLock/CommentaryLock';
 import Dropdown from '../Dropdown/Dropdown';
 import Input from '../Input/Input';
 import Bullets from '../Bullets/Bullets';
+import CommentaryTypes from '../CommentaryTypes/CommentaryTypes';
 
 export default class NewIdea extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.reset();
+    }
+
     render() {
+        const styles = {
+            position: 'relative'
+        };
+
         return (
             <div>
                 <div className="row bottom-xs">
@@ -45,14 +54,19 @@ export default class NewIdea extends React.Component {
                         <CommentaryLock />
                     </div>
                 </div>
-                <CommentaryTextArea title={this.props.title}
-                                    rows={this.props.textAreaRows}
-                                    shouldFocus={this.props.textAreaFocus}
-                                    placeholder="Give your idea a title..."
-                                    updateType={this.props.updateType}
-                                    types={this.props.types}
-                                    onKeyUp={this.props.onKeyUp}
-                                    updateValue={this.props.updateTitle} />
+                <div style={styles}>
+                    <CommentaryTypes updateType={this.props.updateType}
+                                     types={this.props.types} />
+                    <CommentaryTextArea value={this.props.model.title}
+                                        rows={this.props.textAreaRows}
+                                        shouldFocus={this.props.textAreaFocus}
+                                        shouldResize={false}
+                                        placeholder="Give your idea a title..."
+                                        updateType={this.props.updateType}
+                                        types={this.props.types}
+                                        onKeyUp={this.props.onKeyUp}
+                                        updateValue={this.props.updateTitle} />
+                </div>
                 <div className="row">
                     <div className="col-xs-12 col-sm-5">
                         <div className="row">
