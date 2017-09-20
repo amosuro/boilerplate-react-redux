@@ -43,7 +43,6 @@ SYMPHONY.remote.hello().then(function(data) {
         var uiService = SYMPHONY.services.subscribe("ui");
         var shareService = SYMPHONY.services.subscribe("share");
 
-
         // UI: Listen for theme change events
         uiService.listen("themeChangeV2", function() {
             SYMPHONY.remote.hello().then(function(theme) {
@@ -54,27 +53,16 @@ SYMPHONY.remote.hello().then(function(data) {
         });
 
         // MODULE: Add a menu item to our module
-        modulesService.addMenuItem("hello", "About Hello World App", "hello-menu-item");
-        modulesService.setHandler("hello", "hello:app");
+        modulesService.addMenuItem("hello", "About Hello App", "hello-menu-item");
+        modulesService.setHandler("hello", 'hello:app');
 
         helloAppService.implement({
             // If the menu item is selected, display the About text
             menuSelect: function(itemId) {
                 if (itemId == "hello-menu-item") {
-                    document.getElementById("about-seed-app").className = "";
+                    document.getElementById("about-hello-app").className = "";
                 }
             }
-        });
-
-        var fooButton = document.getElementById("foo");
-        // Bind a click event handler
-        fooButton.addEventListener("click", function(){
-            modulesService.show(
-                "hello",
-                {title: "Test"},
-                "hello:controller",
-                "https://localhost:4000/app.html"
-            )
         });
     }.bind(this))
 }.bind(this));
