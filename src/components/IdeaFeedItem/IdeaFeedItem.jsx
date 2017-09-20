@@ -24,7 +24,6 @@ export default class IdeaFeedItem extends React.Component {
         const tags = this.props.item.tags.map((tag, index) => {
             return <a href="" key={index} className="proto-feed-item__tags__tag">{tag}</a>;
         });
-
         const rationales = <ul className="proto-feed-item__rationales">
             {
                 this.props.item.rationales.map((rationale, index) => {

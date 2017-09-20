@@ -36,7 +36,13 @@ export default class CommentaryForm extends React.Component {
             newIdea: {
                 title: '',
                 detail: '',
-                hashTags: ''
+                hashTags: '',
+                entryPrice: '',
+                tpLevel: '',
+                slLevel: '',
+                currency: '',
+                timeHorizon: ''
+
             },
             types: [
                 { id: 'commentary', label: 'Commentary', active: true },
@@ -130,7 +136,12 @@ export default class CommentaryForm extends React.Component {
             newIdea: {
                 title: '',
                 detail: '',
-                hashTags: ''
+                hashTags: '',
+                entryPrice: '',
+                tpLevel: '',
+                slLevel: '',
+                currency: '',
+                timeHorizon: ''
             },
             hashTags: [],
             potentialHashtags: [],
@@ -206,6 +217,18 @@ export default class CommentaryForm extends React.Component {
         if (shouldAdjustHeight) {
             this.adjustInputHeight(event);
         }
+    }
+
+    onNewIdeaInputChange(event, field) {
+        const newIdea = Object.assign(this.state.newIdea);
+
+        newIdea[field] = event.target.value;
+
+        this.setState({
+            newIdea: newIdea
+        });
+
+        console.log(this.state.newIdea.entryPrice);
     }
 
     populateHashtags(event) {
@@ -400,6 +423,7 @@ export default class CommentaryForm extends React.Component {
                 this.generateNewCommentary();
                 break;
             case 'idea':
+                this.generateNewIdea();
                 break;
             case 'news':
                 break;
@@ -417,6 +441,30 @@ export default class CommentaryForm extends React.Component {
             detail: this.state.newCommentary.detail,
             tags: uniqueTags
         };
+        const newPosts = Object.assign(this.state.posts);
+
+        this.setState({
+            posts: [newPost, ...newPosts]
+        });
+    }
+
+    generateNewIdea() {
+        const newTags = [...this.state.hashTags, ...this.getDropdownValuesAsTags()];
+        const uniqueTags = [...new Set(newTags)];
+
+        const newPost = {
+            type: 'idea',
+            title: this.state.newIdea.title,
+            tags: uniqueTags,
+            currency: this.state.newIdea.currency,
+            convictionLevel: this.state.convictionLevels.find(level => level.active).label,
+            entryPrice: this.state.newIdea.entryPrice,
+            tpLevel: this.state.newIdea.tpLevel,
+            slLevel: this.state.newIdea.slLevel,
+            timeHorizon: this.state.newIdea.timeHorizon,
+            rationales: this.state.rationale.filter(rationale => rationale.label.length > 0).map(rationale => rationale.label)
+        };
+
         const newPosts = Object.assign(this.state.posts);
 
         this.setState({
@@ -451,7 +499,6 @@ export default class CommentaryForm extends React.Component {
                 hashTags.push(convertToHashtag(this.state.regions));
                 hashTags.push(convertToHashtag(this.state.assetClass));
                 hashTags.push(convertToHashtag(this.state.products));
-                hashTags.push(convertToHashtag(this.state.convictionLevels));
                 break;
             case 'news':
                 break;
@@ -489,6 +536,7 @@ export default class CommentaryForm extends React.Component {
                                       textAreaFocus={this.state.textAreaFocus}
                                       updateType={this.updateType.bind(this)}
                                       onKeyUp={this.onKeyUp.bind(this)}
+                                      onInputChange={this.onNewIdeaInputChange.bind(this)}
                                       onDropdownSelect={this.onDropdownSelect.bind(this)}
                                       rationale={this.state.rationale}
                                       addNewRationale={this.addNewRationale.bind(this)}

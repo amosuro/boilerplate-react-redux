@@ -71,21 +71,36 @@ export default class NewIdea extends React.Component {
                     <div className="col-xs-12 col-sm-5">
                         <div className="row">
                             <div className="col-xs-4">
-                                <Input type="text" placeholder="Entry price" />
+                                <Input type="text"
+                                       placeholder="Entry price"
+                                       name="entryPrice"
+                                       onChange={this.props.onInputChange} />
                             </div>
                             <div className="col-xs-4">
-                                <Input type="text" placeholder="TP level" />
+                                <Input type="text"
+                                       placeholder="TP level"
+                                       name="tpLevel"
+                                       onChange={this.props.onInputChange} />
                             </div>
                             <div className="col-xs-4">
-                                <Input type="text" placeholder="SL level" />
+                                <Input type="text"
+                                       placeholder="SL level"
+                                       name="slLevel"
+                                       onChange={this.props.onInputChange} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-xs-6">
-                                <Input type="text" placeholder="Currency" />
+                                <Input type="text"
+                                       placeholder="Currency"
+                                       name="currency"
+                                       onChange={this.props.onInputChange} />
                             </div>
                             <div className="col-xs-6">
-                                <Input type="text" placeholder="Time Horizon" />
+                                <Input type="text"
+                                       placeholder="Time Horizon"
+                                       name="timeHorizon"
+                                       onChange={this.props.onInputChange} />
                             </div>
                         </div>
                     </div>
