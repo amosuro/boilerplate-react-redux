@@ -1,0 +1,29 @@
+.symphony-external-app {
+  .proto-filters__search-container {
+    position: relative;
+  }
+
+  .proto-filters__search {
+    cursor: pointer;
+    flex: 0 1 1rem;
+    padding: 1rem;
+  }
+
+  input.proto-filters__search__input {
+    position: absolute;
+    top: 0;
+    left: 2.8rem;
+    padding: 1rem;
+    width: 15rem;
+    background: #3e3e3e;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: 9px 0px 20px -8px rgba(0,0,0,0.5);
+
+    &:hover, &:active, &:focus {
+      background: #3e3e3e;
+      border: none;
+    }
+  }
+}

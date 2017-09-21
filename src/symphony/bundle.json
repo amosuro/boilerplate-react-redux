@@ -2,7 +2,7 @@
   "applications": [
     {
       "type": "sandbox",
-      "id": "hello",
+      "id": "seed",
       "name": "Symphony Seed",
       "blurb": "This is a bare-bones boilerplate used to kick-start Symphony apps",
       "publisher": "HSBC",

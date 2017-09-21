@@ -10,6 +10,7 @@ import CommentaryFormTags from '../CommentaryFormTags/CommentaryFormTags';
 import Button from '../Button/Button';
 import ToolTip from '../ToolTip/Tooltip';
 import CommentaryFeed from '../CommentaryFeed/CommentaryFeed';
+import Filters from '../Filters/Filters';
 
 export default class CommentaryForm extends React.Component {
     constructor(props) {
@@ -596,6 +597,7 @@ export default class CommentaryForm extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Filters />
                 <CommentaryFeed posts={this.state.posts} />
             </div>
         );

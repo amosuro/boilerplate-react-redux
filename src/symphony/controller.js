@@ -80,7 +80,7 @@ SYMPHONY.remote.hello().then(function(data) {
                     navService.focus("hello-nav");
                 }
 
-                modulesService.show("hello", {title: "Hello World App"}, "hello:controller", "https://localhost:4000/app.html", {
+                modulesService.show("hello", {title: "Hello World App"}, "hello:controller", "https://localhost:4000/index.html", {
                     // You must specify canFloat in the module options so that the module can be pinned
                     "canFloat": true,
                 });
@@ -106,7 +106,7 @@ SYMPHONY.remote.hello().then(function(data) {
                     // Include the cashtag in the URL parameters.
                     var cashtag = payload.entity.name;
                     var moduleTitle = "Hello World App: " + cashtag;
-                    modulesService.show("hello-cashtag", {title: moduleTitle}, "hello:controller", "https://localhost:4000/app.html?cashtag=" + cashtag, {
+                    modulesService.show("hello-cashtag", {title: moduleTitle}, "hello:controller", "https://localhost:4000/index.html?cashtag=" + cashtag, {
                         "canFloat": true,
                         // Use parentModuleId to open a new module without closing the original module ("hello")
                         "parentModuleId": "hello"
@@ -124,7 +124,7 @@ SYMPHONY.remote.hello().then(function(data) {
             link: function(type, articleId) {
                 if(type == "article") {
                     var moduleTitle = "Hello World App: " + articleId;
-                    modulesService.show("hello-article", {title: moduleTitle}, "hello:controller", "https://localhost:4000/app.html?article=" + articleId, {
+                    modulesService.show("hello-article", {title: moduleTitle}, "hello:controller", "https://localhost:4000/index.html?article=" + articleId, {
                         "canFloat": true,
                         // Use parentModuleId to open a new module without closing the original module ("hello")
                         "parentModuleId": "hello"

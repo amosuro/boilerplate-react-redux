@@ -1,0 +1,27 @@
+.symphony-external-app {
+  .proto-filters__dropDown {
+    text-align: left;
+    position: absolute;
+    top: 3rem;
+    background: #252525;
+    padding: 0 1rem 1rem 1rem;
+    z-index: 1;
+    min-width: 8rem;
+    cursor: default;
+    font-size: 0.9rem;
+  }
+
+  .proto-radio {
+    margin: 1rem 0 0;
+  }
+
+  .proto-radio__label {
+    display: inline-block;
+  }
+
+  input.proto-radio__input {
+    display: inline-block;
+    margin: 0 1rem 0 0;
+    width: auto;
+  }
+}

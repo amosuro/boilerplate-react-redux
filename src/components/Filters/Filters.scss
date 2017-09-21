@@ -1,0 +1,44 @@
+.proto-filters {
+  margin: 1rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid #191919;
+}
+
+.proto-filters-content {
+  position: relative;
+  display: flex;
+  background: #3e3e3e;
+}
+
+.proto-filters__list {
+  display: flex;
+  overflow-x: hidden;
+  flex: 1 0 auto;
+}
+
+.proto-filters__list::-webkit-scrollbar {
+  display: none;
+}
+
+.proto-filters__navigate {
+  position: absolute;
+  top: 0;
+  padding: 1rem 0.5rem;
+  background: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+.proto-filters__navigate--left {
+  @extend .proto-filters__navigate;
+  left: 3rem;
+}
+
+.proto-filters__navigate--right {
+  @extend .proto-filters__navigate;
+  right: 0;
+}
+
+.proto-filters__navigate__icon {
+  position: relative;
+  top: 50%;
+}
