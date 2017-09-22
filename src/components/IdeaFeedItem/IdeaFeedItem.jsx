@@ -39,7 +39,7 @@ export default class IdeaFeedItem extends React.Component {
         const visibleRationales = this.state.visibility ? rationales : null;
 
         return (
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
                 <div className="proto-feed-item proto-feed-item--idea" onClick={() => this.toggleVisibility()}>
                     <div className="proto-feed-item__title">
                         <div className="row middle-xs">

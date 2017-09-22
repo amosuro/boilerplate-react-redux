@@ -26,4 +26,13 @@
     margin: 0 0 0 0.5rem;
     font-size: 1rem;
   }
+
+  .proto-feed-item__social__item--trend .proto-feed-item__social__item__icon {
+    margin: 0 0.2rem 0 0;
+    font-size: 0.8rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

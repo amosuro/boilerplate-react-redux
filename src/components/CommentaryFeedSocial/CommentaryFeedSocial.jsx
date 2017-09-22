@@ -25,8 +25,10 @@ export default class CommentaryFeedSocial extends React.Component {
                     <span className="fa proto-feed-item__social__item__icon fa-eye"></span>
                     <span className="proto-feed-item__social__item__count">200</span>
                 </div>
-                <div className="proto-feed-item__social__item">
-                    <span className="fa proto-feed-item__social__item__icon fa-bar-chart-o"></span>
+                <div className="proto-feed-item__social__item proto-feed-item__social__item--trend">
+                    <span className="fa proto-feed-item__social__item__icon fa-star"></span>
+                    <span className="fa proto-feed-item__social__item__icon fa-star"></span>
+                    <span className="fa proto-feed-item__social__item__icon fa-star-o"></span>
                 </div>
             </div>
         );

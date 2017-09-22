@@ -29,7 +29,7 @@ export default class CommentaryFeedItem extends React.Component {
         const detailClass = this.state.visibility ? 'proto-feed-item__detail' : 'proto-feed-item__detail--clipped';
 
         return (
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
                 <div className="proto-feed-item proto-feed-item--commentary" onClick={() => this.toggleVisibility()}>
                     <div className="proto-feed-item__title">
                         <h1 className="proto-feed-item__excerpt__heading">{this.props.item.title}</h1>
