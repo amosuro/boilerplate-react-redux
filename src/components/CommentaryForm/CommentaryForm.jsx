@@ -109,6 +109,96 @@ export default class CommentaryForm extends React.Component {
                         '#fx',
                         '#usdzar'
                     ]
+                },
+                {
+                    type: 'idea',
+                    title: 'Buy EURUSD 1m ATM vol',
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#spot'
+                    ],
+                    currency: 'EURUSD',
+                    convictionLevel: '> 80%',
+                    entryPrice: '1.4370',
+                    tpLevel: '1.3350',
+                    slLevel: '1.4650',
+                    timeHorizon: '1M',
+                    rationales: [
+                        'Trumps delay in leaving NAFTA in favor of a more orderly negotiation is beneficial for the Mexican Peso and trade',
+                        'Portfolio adjustments back into MXN whilst ZAR continues to struggle',
+                        '200 DMA having broken it to a low of 1.3360'
+                    ]
+                },
+                {
+                    type: 'commentary',
+                    title: 'South Africa FX update',
+                    detail: `ZAR: USDZAR was trading pretty technically again into the end of last week. Friday's range was well within Thursday's daily print, and I feel the pair remains a buy on dips. We tested the initial target I suggested last week (13.25) and the price action since leads me to suspect that actually an overshoot of the moving averages, towards sonewhere in the 13.35-13.45 area may be likely. This is purely based upon what seems to me to be growing momentum for a stronger broad Dollar. The local story remains driven by longer term structural and political concerns, which for the moment appear not to be currency drivers; fixed income also seems stable for the moment, and this as I say is a broad DXY story. Stick to the same technical levels, albeit raised a little higher, namely 13.05 / 13.15 / 13.25 / 13.35`,
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#usdzar'
+                    ]
+                },
+                {
+                    type: 'idea',
+                    title: 'Buy EURUSD 1m ATM vol',
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#spot'
+                    ],
+                    currency: 'EURUSD',
+                    convictionLevel: '> 80%',
+                    entryPrice: '1.4370',
+                    tpLevel: '1.3350',
+                    slLevel: '1.4650',
+                    timeHorizon: '1M',
+                    rationales: [
+                        'Trumps delay in leaving NAFTA in favor of a more orderly negotiation is beneficial for the Mexican Peso and trade',
+                        'Portfolio adjustments back into MXN whilst ZAR continues to struggle',
+                        '200 DMA having broken it to a low of 1.3360'
+                    ]
+                },
+                {
+                    type: 'commentary',
+                    title: 'South Africa FX update',
+                    detail: `ZAR: USDZAR was trading pretty technically again into the end of last week. Friday's range was well within Thursday's daily print, and I feel the pair remains a buy on dips. We tested the initial target I suggested last week (13.25) and the price action since leads me to suspect that actually an overshoot of the moving averages, towards sonewhere in the 13.35-13.45 area may be likely. This is purely based upon what seems to me to be growing momentum for a stronger broad Dollar. The local story remains driven by longer term structural and political concerns, which for the moment appear not to be currency drivers; fixed income also seems stable for the moment, and this as I say is a broad DXY story. Stick to the same technical levels, albeit raised a little higher, namely 13.05 / 13.15 / 13.25 / 13.35`,
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#usdzar'
+                    ]
+                },
+                {
+                    type: 'idea',
+                    title: 'Buy EURUSD 1m ATM vol',
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#spot'
+                    ],
+                    currency: 'EURUSD',
+                    convictionLevel: '> 80%',
+                    entryPrice: '1.4370',
+                    tpLevel: '1.3350',
+                    slLevel: '1.4650',
+                    timeHorizon: '1M',
+                    rationales: [
+                        'Trumps delay in leaving NAFTA in favor of a more orderly negotiation is beneficial for the Mexican Peso and trade',
+                        'Portfolio adjustments back into MXN whilst ZAR continues to struggle',
+                        '200 DMA having broken it to a low of 1.3360'
+                    ]
+                },
+                {
+                    type: 'commentary',
+                    title: 'South Africa FX update',
+                    detail: `ZAR: USDZAR was trading pretty technically again into the end of last week. Friday's range was well within Thursday's daily print, and I feel the pair remains a buy on dips. We tested the initial target I suggested last week (13.25) and the price action since leads me to suspect that actually an overshoot of the moving averages, towards sonewhere in the 13.35-13.45 area may be likely. This is purely based upon what seems to me to be growing momentum for a stronger broad Dollar. The local story remains driven by longer term structural and political concerns, which for the moment appear not to be currency drivers; fixed income also seems stable for the moment, and this as I say is a broad DXY story. Stick to the same technical levels, albeit raised a little higher, namely 13.05 / 13.15 / 13.25 / 13.35`,
+                    tags: [
+                        '#global',
+                        '#fx',
+                        '#usdzar'
+                    ]
                 }
             ]
         }

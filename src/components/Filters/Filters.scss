@@ -1,19 +1,22 @@
 .proto-filters {
   margin: 1rem 0 0;
   padding: 1rem 0 0;
-  border-top: 1px solid #191919;
+  border-top: 1px solid #4e4e4e;
+  position: relative;
 }
 
 .proto-filters-content {
   position: relative;
   display: flex;
   background: #3e3e3e;
+  overflow-x: hidden;
 }
 
 .proto-filters__list {
   display: flex;
-  overflow-x: hidden;
+  overflow-x: scroll;
   flex: 1 0 auto;
+  width: 100%;
 }
 
 .proto-filters__list::-webkit-scrollbar {
@@ -30,7 +33,7 @@
 
 .proto-filters__navigate--left {
   @extend .proto-filters__navigate;
-  left: 3rem;
+  left: 2.9rem;
 }
 
 .proto-filters__navigate--right {
