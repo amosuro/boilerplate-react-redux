@@ -1,0 +1,48 @@
+@import '../../styles/mixins';
+@import '../../styles/colour_semantics';
+
+.user-info {
+  @include darkTheme {
+    h1.user-info__heading,
+    p.user-info__body {
+      color: $font-color-dark;
+    }
+  }
+
+  @include lightTheme {
+    h1.user-info__heading,
+    p.hello-symphony__body {
+      color: $font-color-light;
+    }
+  }
+}
+
+.user-info-panel {
+  border-radius: 3px;
+  margin: 1rem 0;
+  padding: 1rem;
+  text-align: center;
+
+  .user-info__heading {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+
+    @include darkTheme {
+      color: $font-color-dark;
+    }
+
+    @include lightTheme {
+      color: $font-color-light;
+    }
+  }
+
+  // Dark theme styles
+  @include darkTheme {
+    background: $bg-color-dark;
+  }
+
+  // Light theme styles
+  @include lightTheme {
+    background: $bg-color-light;
+  }
+}

@@ -1,0 +1,13 @@
+@import 'colour_palette';
+
+// This is where you should be referencing colours from your app's components, NOT the colour_palette file directly.
+
+// FONTS
+$font-color-dark: palette(stone);
+$font-color-light: palette(charcoal);
+
+// BACKGROUNDS
+$bg-color-dark: palette(charcoal);
+$bg-color-dark--active: palette(charcoal, dark);
+$bg-color-light: palette(stone);
+$bg-color-light--active: palette(stone, dark);

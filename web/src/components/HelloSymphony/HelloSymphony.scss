@@ -1,0 +1,20 @@
+@import '../../styles/mixins';
+@import '../../styles/colour_semantics';
+
+.hello-symphony {
+  border-radius: 3px;
+
+  @include darkTheme {
+    h1.hello-symphony__heading,
+    p.hello-symphony__body {
+      color: $font-color-dark;
+    }
+  }
+
+  @include lightTheme {
+    h1.hello-symphony__heading,
+    p.hello-symphony__body {
+      color: $font-color-light;
+    }
+  }
+}

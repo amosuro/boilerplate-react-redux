@@ -1,0 +1,7 @@
+// We are using Foundation primarily for the incredibly flexible XY Grid System they have available.
+// More details can be found here: https://foundation.zurb.com/sites/docs/xy-grid.html
+// You can add other Foundation components in this file as well (see the imported foundation stylesheet to see all
+// available components)
+@import '~foundation-sites/scss/foundation';
+
+@include foundation-xy-grid-classes;

@@ -1,0 +1,15 @@
+@import 'foundation_components';
+@import 'mixins';
+@import 'colour_semantics';
+
+.symphony-hsbc-app {
+  padding: 1rem;
+
+  @include darkTheme {
+    color: $font-color-dark;
+  }
+
+  @include lightTheme {
+    color: $font-color-light;
+  }
+}

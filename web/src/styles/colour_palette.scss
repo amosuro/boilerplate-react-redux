@@ -1,0 +1,36 @@
+// We use a map of colours to manage our colour palette.
+
+// For each colour we introduce into our app, we should create a base colour variable and add it's corresponding shades
+// to the palettes map below, ensuring that at the very least we define a 'base', 'light' and 'dark' variation of the colour.
+
+// If you need more shades for your colour, use the following naming pattern:
+// x-dark
+// dark
+// mid-dark
+// base
+// mid-light
+// light
+// x-light
+
+// NOTE: Make sure you use the lighten() and darken() colour functions for different variations of the base colour
+// rather than redefining new colours - this will help keep shades consistent if you decide to change the base colour.
+
+$_color-base-stone: #CECECE;
+$_color-base-charcoal: #111111;
+
+$palettes: (
+        stone: (
+                base: $_color-base-stone,
+                light: lighten($_color-base-stone, 10%),
+                dark: darken($_color-base-stone, 10%)
+        ),
+        charcoal: (
+                base: $_color-base-charcoal,
+                light: lighten($_color-base-charcoal, 10%),
+                dark: darken($_color-base-charcoal, 10%)
+        )
+);
+
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
