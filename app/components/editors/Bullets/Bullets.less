@@ -1,0 +1,73 @@
+@import '../../../../less/v2/_color_palette';
+
+.proto-bullets__bullet {
+  display: flex;
+}
+
+.proto-bullets__bullet--existing {
+  .proto-bullets__bullet;
+
+  input.proto-bullets__bullet__label {
+    background: transparent;
+  }
+}
+
+.proto-bullets__bullet--first {
+  .proto-bullets__bullet__remove {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+.proto-bullets__bullet__label {
+  flex: 0 1 auto;
+}
+
+.proto-bullets__bullet__remove {
+  flex: 0 1 auto;
+  text-align: right;
+}
+
+.proto-bullets__bullet__remove-icon {
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  color: @error-color;
+}
+
+.proto-bullets__new {
+  background-color: @success-color;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.8rem;
+  line-height: 1;
+  margin: 0.2rem 0 0.2rem 0.5rem;
+  outline: 0;
+
+  &:hover {
+    background-color: @success-color-dark;
+  }
+
+  &[disabled] {
+    background-color: @disabled-color;
+
+    .proto-bullets__new-icon {
+      color: @disabled-color-dark;
+    }
+
+    &:hover {
+      background-color: @disabled-color;
+    }
+  }
+}
+
+.proto-bullets__new-icon {
+  color: @success-color-darker;
+  flex: 0 1 auto;
+}
+
+.proto-bullets__new-label {
+  flex: 0 1 auto;
+  margin: 0 0.3rem 0 0;
+}

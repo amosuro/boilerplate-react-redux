@@ -1,0 +1,45 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-feed-item__meta {
+    padding: 0.5rem;
+    margin: 0.5rem 0 0;
+    background: rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .proto-feed-item__meta__author {
+    display: flex;
+    align-items: center;
+  }
+
+  .proto-feed-item__meta__author__pic {
+    flex: 0 1 auto;
+    margin: 0 0.5rem 0 0;
+  }
+
+  .proto-feed-item__meta__author__pic-image {
+    width: 1.5rem;
+    border-radius: 2.5rem;
+  }
+
+  .proto-feed-item__meta__author__name {
+    text-decoration: none;
+    flex: 0 1 auto;
+    font-size: 0.8rem;
+  }
+
+  .proto-feed-item__meta__timestamp {
+    width: 100%;
+    text-align: right;
+    color: rgba(0,0,0,0.7);
+    font-size: 0.8rem;
+    margin: 0.3rem 0 0;
+  }
+
+  .proto-feed-item__meta__privacy {
+    color: @warning-color;
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0 0;
+  }
+}

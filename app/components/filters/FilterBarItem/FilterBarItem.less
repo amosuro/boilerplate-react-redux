@@ -1,0 +1,31 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-filters__list-item {
+    flex: 0 0 6rem;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(0,0,0,0.2);
+    }
+  }
+
+  .proto-filters__list-item--active {
+    background: rgba(0,0,0,0.4);
+  }
+
+  .proto-filters__list-item__label {
+    display: inline-block;
+    margin: 0 0.8rem 0 0;
+    font-size: 0.8rem;
+  }
+
+  .proto-filters__list-item__icon {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.3);
+  }
+}

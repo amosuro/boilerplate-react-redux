@@ -1,0 +1,218 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-feed {
+    margin: 1rem 0 0;
+  }
+
+  .proto-feed-item {
+    border-radius: 3px;
+    padding: 0.5rem 0 0;
+    margin: 0 0 2rem 0;
+    position: relative;
+
+    &.proto-feed-item--commentary {
+      background: @commentary-color;
+    }
+
+    &.proto-feed-item--idea {
+      background: @idea-color;
+    }
+
+    &.proto-feed-item--news {
+      background: @news-color;
+    }
+  }
+
+  .proto-feed-item--expanded {
+    .proto-feed-item;
+
+    height: auto;
+
+    .proto-feed-item__detail,
+    .proto-feed-item__rationales {
+      height: auto;
+    }
+
+    .proto-feed-item__excerpt__heading {
+      display: block;
+      overflow: visible;
+    }
+  }
+
+  .proto-feed-item__title {
+    margin: 0 0.5rem 0.2rem 0.5rem;
+  }
+
+  .proto-feed-item__edit {
+    text-align: right;
+    width: 100%;
+  }
+
+  .proto-feed-item__edit__icon {
+    color: @primary-text-color;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    top: -0.1rem;
+  }
+
+  .proto-feed-item__excerpt__heading {
+    cursor: pointer;
+    color: @primary-text-color;
+    font-size: 1.2rem;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    &:hover {
+      color: rgba(255,255,255, 0.5);
+    }
+  }
+
+  .proto-feed-item__tags {
+    margin: 0 0.5rem 1rem 0.5rem;
+  }
+
+  .proto-feed-item__tags__tag {
+    display: inline-block;
+    margin: 0 0.2rem;
+    text-decoration: none;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .proto-feed-item__detail {
+    height: 3.7rem;
+    margin: 0 0.5rem;
+    min-height: 3.7rem;
+  }
+
+  .proto-feed-item__detail--clipped {
+    .proto-feed-item__detail;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+
+// IDEA styles
+
+.proto-feed-item--idea {
+  .proto-feed-item__excerpt__currency {
+    text-align: right;
+  }
+
+  .proto-feed-item__excerpt__currency__badge {
+    color: rgba(255,255,255,0.5);
+    padding: 0.3rem 0.5rem;
+    background: rgba(0,0,0,0.2);
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+  }
+
+  .proto-price {
+    margin: 0 0.5rem;
+  }
+
+  .proto-price-badge {
+    text-align: center;
+  }
+
+  .proto-price-badge__label {
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.4);
+    padding: 0.2rem;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .proto-price-badge__price {
+    background: rgba(0,0,0,0.2);
+    padding: 0.2rem;
+    font-weight: bold;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .proto-conviction {
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .proto-conviction--high {
+    background-color: @conviction-color-high;
+  }
+
+  .proto-conviction--medium {
+    background-color: @conviction-color-medium;
+  }
+  .proto-conviction--low {
+    background-color: @conviction-color-low;
+  }
+
+  .proto-conviction__label {
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.4);
+    padding: 0.2rem;
+  }
+
+  .proto-conviction__level {
+    background: rgba(0,0,0,0.2);
+    padding: 0.2rem;
+    font-weight: bold;
+  }
+
+  .proto-feed-item__rationales {
+    height: 3.7rem;
+    margin: 1rem 0.5rem;
+    min-height: 3.7rem;
+  }
+
+  .proto-feed-item__rationales__rationale {
+    color: @primary-text-color;
+  }
+
+  .proto-idea-meta {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .proto-idea-meta__item {
+    padding: 0.2rem 0.4rem;
+    margin: 0 0 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+  }
+
+  .proto-idea-meta__item--active {
+    .proto-idea-meta__item;
+    background: @primary-link-color;
+  }
+
+  .proto-idea-meta__item--positive {
+    .proto-idea-meta__item;
+    background: @success-color;
+  }
+
+  .proto-idea-meta__item--negative {
+    .proto-idea-meta__item;
+    background: @error-color;
+  }
+
+  .proto-idea-meta__item--neutral {
+    .proto-idea-meta__item;
+  }
+}
+
+.proto-feed-item__comments {
+  background: rgba(0,0,0, 0.2);
+  padding: 0.5rem;
+}

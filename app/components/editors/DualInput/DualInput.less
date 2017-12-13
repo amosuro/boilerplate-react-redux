@@ -1,0 +1,70 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-dual-input {
+    position: relative;
+    margin: 0 0 0.5rem 0;
+
+    .invalid-form-field-message {
+      position: absolute;
+    }
+
+    input.proto-dual-input {
+      margin-bottom: 0;
+      box-sizing: border-box;
+      border: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 2rem 1rem 1rem 0.5rem;
+      font-size: 2rem;
+      line-height: 1.5;
+      width: 100%;
+
+      &:focus {
+        outline:0;
+      }
+    }
+
+    // Custom styling for Draftjs rich text editor
+    .DraftEditor-root {
+      background-color: @input-bg-color;
+      border: none;
+      border-radius: 3px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      color: @input-color;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-top: 0;
+      padding: 0.2rem 0.5rem 1.5rem 0.5rem;
+      width: 100%;
+
+      &:focus {
+        outline:0;
+      }
+    }
+
+    .proto-format {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      position: absolute;
+      bottom: 0.3rem;
+      left: 0.2rem;
+      font-size: 0.8rem;
+    }
+
+    .proto-format__option {
+      flex: 0 1 auto;
+      margin: 0 0.5rem;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.1;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import '../../../../less/v2/_color_palette';
+
+.proto-dropdown {
+  color: @primary-text-color;
+  background-color: @input-bg-color;
+  font-size: 0.8rem;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.proto-dropdown.proto-dropdown--locked {
+  cursor: not-allowed;
+}
+
+.proto-dropdown__current.proto-dropdown--locked,
+.proto-dropdown__icon.proto-dropdown--locked {
+  pointer-events: none;
+}
+
+.proto-dropdown--active {
+  border-radius: 3px 3px 0 0;
+}
+
+.proto-dropdown__current {
+  padding: 0.4rem;
+  margin: 0.4rem 0;
+}
+
+.proto-dropdown__current--default {
+  .proto-dropdown__current;
+
+  opacity: 0.4;
+}
+
+.proto-dropdown__icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  color: @primary-text-color-dark;
+}
+
+.proto-dropdown__list {
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  background: @input-bg-color;
+  border-radius: 0 0 3px 3px;
+  padding: 0;
+  z-index: 2;
+}
+
+.proto-dropdown__list__item {
+  color: @primary-text-color;
+  box-sizing: border-box;
+  padding: 0.2rem 0.5rem;
+  width: 100%;
+
+  &:hover {
+    background: @input-bg-color-hover;
+  }
+}
+
+.proto-dropdown__list__item--selected {
+  .proto-dropdown__list__item;
+
+  background: @input-bg-color-active;
+
+  &:hover {
+    background: @input-bg-color-hover;
+  }
+}

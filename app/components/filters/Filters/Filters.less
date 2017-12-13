@@ -1,0 +1,50 @@
+@import '../../../../less/v2/_color_palette';
+
+.proto-filters {
+  margin: 1rem 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid @border-color;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.proto-filters-content {
+  position: relative;
+  display: flex;
+  background: @panel-bg-color;
+  overflow-x: hidden;
+}
+
+.proto-filters__list {
+  display: flex;
+  overflow-x: scroll;
+  flex: 1 0 auto;
+  width: 90%;
+}
+
+.proto-filters__list::-webkit-scrollbar {
+  display: none;
+}
+
+.proto-filters__navigate {
+  position: absolute;
+  top: 0;
+  padding: 1rem 0.5rem;
+  background: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+.proto-filters__navigate--left {
+  .proto-filters__navigate;
+  left: 2.7rem;
+}
+
+.proto-filters__navigate--right {
+  .proto-filters__navigate;
+  right: 0;
+}
+
+.proto-filters__navigate__icon {
+  position: relative;
+  top: 50%;
+}

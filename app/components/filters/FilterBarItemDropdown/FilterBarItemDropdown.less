@@ -1,0 +1,49 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-filters__dropDown {
+    text-align: left;
+    position: absolute;
+    top: 4rem;
+    background: @panel-bg-color;
+    padding: 0 1rem 1rem 1rem;
+    z-index: 11;
+    min-width: 7rem;
+    cursor: default;
+    font-size: 0.9rem;
+  }
+
+  .proto-radio,
+  .proto-checkbox,
+  .proto-text {
+    margin: 1rem 0 0;
+  }
+
+  .proto-radio__label {
+    color: @primary-text-color;
+    display: inline-block;
+  }
+
+  input.proto-radio__input {
+    display: inline-block;
+    margin: 0 1rem 0 0;
+    width: auto;
+  }
+
+  .proto-text {
+    display: flex;
+    align-items: center;
+  }
+
+  input.proto-text__input {
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    width: auto;
+    margin: 0 0.5rem 0 0;
+  }
+
+  .proto-text__btn {
+    flex: 0 1 50px;
+    cursor: pointer;
+  }
+}

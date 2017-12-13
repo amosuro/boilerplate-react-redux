@@ -1,0 +1,35 @@
+@import '../../../../less/v2/_color_palette';
+
+.proto-filters-applied {
+  font-size: 0.7rem;
+  background: transparent;
+}
+
+.proto-filters-applied__item {
+  display: inline-block;
+  margin: 0.4rem 0.4rem 0 0;
+  padding: 0.4rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.proto-filters-applied__item {
+  background: @pill-bg-color;
+  border-radius: 3px;
+  color: @primary-text-color-dark;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover .proto-filters-applied__item__icon {
+    color: @error-color;
+    opacity: 1;
+  }
+}
+
+.proto-filters-applied__item__icon {
+  display: inline-block;
+  margin: 0 0.2rem 0;
+  opacity: 0.3;
+}

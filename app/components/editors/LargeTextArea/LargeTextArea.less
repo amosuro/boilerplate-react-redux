@@ -1,0 +1,39 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-input {
+    display: flex;
+    position: relative;
+  }
+
+  textarea.proto-input__field {
+    flex: 0 1 auto;
+    font-size: 2rem;
+    line-height: 1.5;
+    padding: 2rem 0.5rem 1rem 0.5rem;
+    border-radius: 3px;
+    resize: none;
+    background-color: @input-bg-color;
+    color: @input-color;
+    border: none;
+    width: 100%;
+    margin: 0.2rem 0;
+
+    &:focus {
+      outline:0;
+    }
+  }
+
+  .poc-textarea {
+    background-color: @input-bg-color;
+    color: @input-color;
+    border: none;
+    width: 100%;
+    margin: 0.2rem 0;
+    padding: 0.4rem;
+    box-sizing: border-box;
+    line-height: 1.1;
+    resize: none;
+    border-radius: 3px;
+  }
+}

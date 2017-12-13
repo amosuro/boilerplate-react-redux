@@ -1,0 +1,46 @@
+@import '../../../../less/v2/_animations';
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-stars {
+    display: flex;
+    height: 15px;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+  }
+
+  .proto-stars__star {
+    flex: 0 1 auto;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin: 0;
+    color: @highlight-color-dark;
+    position: relative;
+    width: 20px;
+
+  }
+
+  .proto-stars__star.fa-star:before {
+    position: absolute;
+    animation: 1.5s 1 bounce;
+    top: 0;
+    right: 0;
+    color: @highlight-color;
+    width: 20px;
+  }
+
+  .proto-stars--fifth {
+    animation: 1.5s 1 bounce;
+    top: 0;
+    right: 0;
+
+    .proto-stars__star.fa-star:before {
+      animation: 1.5s 1 fiveStars;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../../../less/v2/_color_palette';
+@import '../../../../less/v2/_animations';
+
+.symphony-external-app {
+  .proto-tags {
+    display: flex;
+    margin: 0.5rem 0 0.5rem 0;
+  }
+
+  .proto-tags__heading {
+    flex: 0 1 auto;
+    color: @primary-text-color-dark;
+    font-weight: bold;
+    margin-top: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  .proto-tags__list {
+    flex: 0 1 auto;
+    list-style: none;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+  }
+
+  .proto-tags__list__item {
+    display: inline-block;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin: 0 0.5rem 0 0;
+    animation: 1s 1 bounce;
+  }
+
+  .proto-tags__list__item-link {
+    text-decoration: none;
+  }
+
+  .proto-tags__empty {
+    color: @highlight-color;
+    flex: 0 1 auto;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin: 0 0 0 0.5rem;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  .proto-tags__empty__info {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../../../less/v2/_color_palette';
+
+.symphony-external-app {
+  .proto-filters__search-container {
+    position: relative;
+  }
+
+  .proto-filters__search {
+    cursor: pointer;
+    flex: 0 1 1rem;
+    padding: 1rem;
+  }
+
+  input.proto-filters__search__input {
+    position: absolute;
+    top: 0;
+    left: 2.7rem;
+    padding: 1rem;
+    width: 15rem;
+    background: @panel-bg-color;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: 9px 0px 20px -8px rgba(0,0,0,0.5);
+
+    &:hover, &:active, &:focus {
+      background: @panel-bg-color;
+      border: none;
+      outline: 0;
+    }
+  }
+}
